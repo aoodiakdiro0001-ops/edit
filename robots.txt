@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aoodiakdiro0001-ops.github.io/edit/sitemap.xml
