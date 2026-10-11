@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minay | Tam Özgürlük ve Gizlilik — BTC veya Havale ile Her Şey</title>
+<meta name="description" content="Minay: 80+ ürün, milyonlara uzanan katalog, BTC (gizli) veya banka havalesi ile ödeme. Tam özgürlük ve gizlilik.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+:root{--pink:#e91e63;--purple:#6a1b9a;--bg:#faf7fc;--dark:#241a2b;--green:#1faa53}
+body{background:var(--bg);color:var(--dark)}
+.topbar{background:#1a1023;color:#7CFFB2;font-size:12.5px;text-align:center;padding:8px 12px}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#14101d,#4a148c);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 12px rgba(0,0,0,.3);flex-wrap:wrap}
+.logo{font-size:24px;font-weight:900;line-height:1.1}
+.logo small{display:block;font-size:11px;font-weight:400;opacity:.9;color:#7CFFB2}
+.hsearch{flex:1;min-width:170px;max-width:420px;margin-left:auto;display:flex}
+.hsearch input{flex:1;padding:10px 14px;border:none;border-radius:20px 0 0 20px;font-size:13.5px;outline:none;min-width:0}
+.hsearch button{border:none;background:#7CFFB2;color:#0c2b18;font-weight:800;padding:0 16px;border-radius:0 20px 20px 0;cursor:pointer;font-size:13px}
+select.sel{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;padding:8px 10px;border-radius:18px;font-size:13px;outline:none;cursor:pointer}
+select.sel option{color:#222}
+.cart-btn{background:#7CFFB2;border:none;color:#0c2b18;padding:9px 18px;border-radius:22px;cursor:pointer;font-weight:800;font-size:14px;white-space:nowrap}
+#cartCount{background:#0c2b18;color:#7CFFB2;border-radius:50%;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 5px}
+.hero{background:radial-gradient(900px 380px at 80% -50%,#4a148c66,transparent),linear-gradient(135deg,#14101d,#2c1445);padding:56px 20px 42px;text-align:center;color:#fff}
+.hero .pill{display:inline-block;background:transparent;border:1.5px solid #7CFFB2;color:#7CFFB2;font-weight:800;font-size:13px;padding:6px 18px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:38px;margin-bottom:6px}
+.hero h1 span{color:#7CFFB2}
+.hero .motto{font-size:17px;color:#e1bee7;margin-bottom:10px}
+.hero p{font-size:14.5px;color:#bdaeca;max-width:700px;margin:0 auto 20px}
+.priv{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.priv div{background:rgba(255,255,255,.07);border:1px solid rgba(124,255,178,.35);border-radius:14px;padding:10px 18px;font-size:13px}
+.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+.stat{background:#fff;color:var(--dark);border-radius:16px;padding:14px 26px;box-shadow:0 3px 10px rgba(0,0,0,.2);min-width:130px}
+.stat b{font-size:24px;color:var(--purple);display:block}
+.stat span{font-size:12.5px;color:#777}
+.sec-title{font-size:22px;color:#4a148c;margin:28px 0 12px;text-align:center}
+.stores{max-width:1150px;margin:0 auto;padding:0 15px}
+.store-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 14px}
+.store-card{flex:0 0 165px;background:#fff;border-radius:16px;padding:16px 10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:5px solid #ccc}
+.store-card .slogo{font-weight:900;font-size:17px;margin-bottom:4px}
+.store-card small{color:#777;font-size:12px;display:block;margin-bottom:10px}
+.store-card a{display:inline-block;padding:8px 16px;border-radius:18px;color:#fff;text-decoration:none;font-size:13px;font-weight:700}
+.hub-grid{max-width:1150px;margin:0 auto;padding:0 15px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.hub{background:#fff;border-radius:14px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);font-size:13px;font-weight:700}
+.hub small{display:block;color:#888;font-weight:400;margin:4px 0 8px}
+.hub .hl{display:flex;gap:4px;justify-content:center}
+.hub .hl a{font-size:11px;font-weight:800;color:#fff;text-decoration:none;padding:5px 9px;border-radius:10px}
+.toolbar{max-width:1150px;margin:8px auto;padding:0 15px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cats{display:flex;gap:8px;flex-wrap:wrap}
+.cats button{padding:9px 14px;border-radius:20px;border:2px solid var(--purple);background:#fff;color:var(--purple);cursor:pointer;font-size:13px}
+.cats button.active,.cats button:hover{background:var(--purple);color:#fff}
+#sort{margin-left:auto;padding:10px 14px;border-radius:20px;border:2px solid #d1c4e9;font-size:13.5px;background:#fff;outline:none}
+.grid{max-width:1150px;margin:0 auto;padding:12px 15px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.09);position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px)}
+.best{position:absolute;top:10px;left:10px;background:var(--green);color:#fff;font-size:12px;font-weight:800;padding:5px 12px;border-radius:12px;z-index:2}
+.pimg{position:relative;height:205px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:58px;overflow:hidden}
+.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.card:hover .pimg img{transform:scale(1.06)}
+.pbody{padding:14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pcat{font-size:11.5px;color:var(--purple);font-weight:800}
+.pname{font-size:16px;font-weight:800}
+.rating{font-size:13px;color:#f57f17}
+.rating small{color:#999}
+.minay-line{background:#f3e5f5;border-radius:10px;padding:8px 10px;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.minay-line b{color:var(--purple);font-size:14.5px;white-space:nowrap}
+.minay-line small{display:block;font-size:10.5px;color:#777}
+.offers{display:flex;flex-direction:column;gap:7px}
+.offer{display:flex;align-items:center;gap:8px;border:1.5px solid #eee;border-radius:12px;padding:8px 10px;font-size:13px}
+.offer.cheapest{border-color:var(--green);background:#f1f8e9}
+.offer .sname{font-weight:800;font-size:12px;padding:3px 9px;border-radius:9px;color:#fff;white-space:nowrap}
+.offer .pr{font-weight:900;font-size:14.5px}
+.offer a{margin-left:auto;background:var(--dark);color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:7px 12px;border-radius:16px;white-space:nowrap}
+.card .row{display:flex;gap:8px;margin-top:auto}
+.add{flex:1;background:#0c2b18;color:#7CFFB2;border:none;font-weight:800;padding:11px;border-radius:12px;cursor:pointer;font-size:13.5px}
+.more{flex:1;background:#fff;border:2px solid var(--purple);color:var(--purple);font-weight:800;padding:10px;border-radius:12px;cursor:pointer;font-size:13px}
+.panel{max-width:900px;margin:0 auto;padding:0 15px}
+.box{background:#fff;border-radius:18px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.08);margin-top:6px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.howto div{background:#f9f4ff;border-radius:14px;padding:16px;text-align:center;font-size:13.5px}
+.howto b{display:block;font-size:28px;margin-bottom:6px}
+.trackrow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.trackrow input{flex:1;min-width:180px;padding:12px 14px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;direction:ltr;text-align:center}
+.trackrow button{background:var(--purple);color:#fff;border:none;padding:12px 26px;border-radius:12px;font-weight:800;cursor:pointer}
+#trackRes{margin-top:12px;font-size:14px}
+.features{max-width:1150px;margin:10px auto;padding:0 15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.feat{background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.feat .ic{font-size:36px}
+.feat b{display:block;margin:8px 0 4px}
+.feat p{font-size:13px;color:#666}
+.revs{max-width:1150px;margin:0 auto;padding:0 15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.rev{background:#fff;border-radius:16px;padding:18px;font-size:14px}
+.rev .stars{color:#f57f17;margin-bottom:6px}
+.rev b{color:var(--purple)}
+.faq{max-width:800px;margin:0 auto;padding:0 15px 10px}
+.faq details{background:#fff;border-radius:12px;margin:8px 0;padding:14px 18px;font-size:14.5px}
+.faq summary{font-weight:800;cursor:pointer;color:#4a148c}
+.wallet{text-align:center}
+.wallet .addr{background:#241a2b;color:#7CFFB2;font-family:monospace;font-size:13px;padding:12px;border-radius:12px;word-break:break-all;margin:12px 0;direction:ltr}
+.ibanbox{background:#f9f4ff;border:2px solid #d1c4e9;border-radius:14px;padding:14px;margin:10px 0;text-align:left}
+.ibanbox .nm{font-weight:800}
+.ibanbox .ib{font-family:monospace;font-size:16px;letter-spacing:1px;direction:ltr;background:#fff;border-radius:8px;padding:8px;margin:6px 0}
+.ibanbox button{background:var(--purple);color:#fff;border:none;padding:8px 18px;border-radius:14px;font-weight:800;cursor:pointer;font-size:13px}
+.wallet .wrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btnG{background:var(--green);color:#fff;border:none;padding:11px 24px;border-radius:18px;font-weight:800;cursor:pointer}
+.wallet small{color:#888;font-size:12px;display:block;margin-top:10px}
+footer{background:#14101d;color:#cfc3d8;padding:30px 20px;font-size:13.5px}
+footer .cols{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+footer b{color:#fff;display:block;margin-bottom:8px}
+footer a{color:#7CFFB2;text-decoration:none}
+.admin-link{text-align:center;margin-top:16px}
+.admin-link button{background:none;border:1px solid #5a4a6a;color:#9b8aa8;padding:8px 20px;border-radius:18px;cursor:pointer;font-size:12.5px}
+.disc{max-width:1150px;margin:14px auto 0;border-top:1px solid #3a2b4a;padding-top:14px;font-size:12px;color:#9b8aa8}
+#drawer{position:fixed;top:0;right:0;width:min(400px,94vw);height:100%;background:#fff;z-index:100;box-shadow:-2px 0 20px rgba(0,0,0,.25);transform:translateX(105%);transition:.3s;display:flex;flex-direction:column}
+#drawer.open{transform:none}
+#drawer h2{background:#0c2b18;color:#7CFFB2;padding:16px;margin:0;font-size:18px}
+#drawerItems{flex:1;overflow:auto;padding:12px}
+.citem{display:flex;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:10px 0;font-size:13.5px}
+.citem img{width:48px;height:48px;object-fit:cover;border-radius:10px;flex-shrink:0}
+.citem .n{flex:1;font-weight:700}
+.qty{display:flex;gap:6px;align-items:center}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--purple);background:#fff;color:var(--purple);cursor:pointer;font-weight:900}
+#cartFoot{padding:15px;border-top:2px solid #eee}
+#total{font-size:19px;font-weight:900;color:var(--purple);margin-bottom:4px}
+#totalBtc{font-size:14px;color:var(--green);font-weight:800;margin-bottom:10px;direction:ltr;text-align:left}
+#checkoutBtn{width:100%;background:#0c2b18;color:#7CFFB2;border:none;padding:14px;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;display:none}
+#overlay.show{display:block}
+#modal,#adminModal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);background:#fff;width:min(620px,94vw);max-height:90vh;overflow:auto;border-radius:20px;z-index:110;padding:24px;display:none;opacity:0;transition:.25s}
+#modal.show,#adminModal.show{display:block;opacity:1;transform:translate(-50%,-50%) scale(1)}
+#modal h3{color:#4a148c;margin:6px 0 4px}
+.mimg{width:100%;height:220px;object-fit:cover;border-radius:14px}
+.steps{display:flex;gap:6px;margin:12px 0}
+.steps div{flex:1;text-align:center;font-size:12px;padding:7px;border-radius:10px;background:#eee;color:#888;font-weight:700}
+.steps div.on{background:var(--purple);color:#fff}
+#coAddr{width:100%;min-height:90px;padding:12px;border:2px solid #d1c4e9;border-radius:12px;font-size:14px;margin:8px 0}
+.bigbtn{width:100%;background:#0c2b18;color:#7CFFB2;border:none;padding:14px;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer;margin-top:8px}
+.ghostbtn{width:100%;background:#fff;border:2px solid var(--purple);color:var(--purple);padding:10px;border-radius:12px;font-weight:800;cursor:pointer;margin-top:8px}
+.paycards{display:flex;gap:10px;margin:10px 0}
+.paycard{flex:1;border:2px solid #e0e0e0;border-radius:14px;padding:16px;text-align:center;cursor:pointer}
+.paycard:hover{border-color:var(--purple)}
+.paycard b{display:block;font-size:16px;margin-bottom:4px}
+.paycard small{color:#666;font-size:12px}
+.paybox{background:#241a2b;color:#fff;border-radius:14px;padding:16px;text-align:center;margin:10px 0}
+.paybox .amt{font-size:26px;font-weight:900;color:#7CFFB2;direction:ltr}
+.paybox .amt2{font-size:15px;color:#e1bee7;direction:ltr}
+.paybox .adr{font-family:monospace;font-size:12px;word-break:break-all;color:#e1bee7;margin:8px 0;direction:ltr}
+.oid{background:#f1f8e9;border:2px dashed var(--green);border-radius:12px;padding:14px;text-align:center;font-size:22px;font-weight:900;letter-spacing:2px;direction:ltr;margin:10px 0}
+.ccyrow{display:flex;gap:8px;margin:8px 0}
+.ccyrow button{flex:1;padding:10px;border-radius:12px;border:2px solid var(--purple);background:#fff;color:var(--purple);font-weight:800;cursor:pointer}
+.ccyrow button.on{background:var(--purple);color:#fff}
+#adminModal h3{color:#4a148c;margin-bottom:10px}
+#adminModal input,#adminModal textarea,#adminModal select{width:100%;padding:10px;margin:6px 0;border:2px solid #e0e0e0;border-radius:10px;font-size:14px}
+.abtn{background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:12px;font-weight:800;cursor:pointer;margin:4px 4px 4px 0;font-size:14px}
+.atabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.atabs button{border:2px solid var(--purple);background:#fff;color:var(--purple);border-radius:16px;padding:7px 13px;cursor:pointer;font-size:12.5px;font-weight:700}
+.atabs button.on{background:var(--purple);color:#fff}
+.atable{width:100%;font-size:12px;border-collapse:collapse;margin-top:8px}
+.atable td,.atable th{border-bottom:1px solid #eee;padding:7px 6px;text-align:left;vertical-align:top}
+.warn{background:#fff3e0;border:1px solid #ffb74d;border-radius:10px;padding:10px;font-size:12px;color:#5d4037;margin:10px 0}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 25px;border-radius:25px;z-index:200;display:none;font-size:14px;max-width:92vw;text-align:center}
+[dir="rtl"] .hsearch input{border-radius:0 20px 20px 0}
+.fndbox{display:flex;gap:22px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#fff,#f3e5f5)}
+.fndphoto{width:220px;height:280px;object-fit:cover;border-radius:18px;flex-shrink:0;box-shadow:0 6px 20px rgba(74,20,140,.3);border:3px solid #fff}
+.fndfb{display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:900;color:#fff;background:linear-gradient(135deg,#4a148c,#e91e63)}
+.fndinfo{flex:1;min-width:250px}
+.fndname{font-size:25px;font-weight:900}
+.verified{background:var(--green);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;vertical-align:middle;font-weight:800}
+.fndrole{color:var(--purple);font-weight:800;margin:2px 0 8px}
+.fndmsg{font-style:italic;color:#444;font-size:14.5px;line-height:1.8}
+.fndbul{margin:10px 0 0 20px;font-size:13.5px;line-height:2;color:#333}
+[dir="rtl"] .fndbul{margin:10px 20px 0 0}
+.deptnav{background:#0c2b18;display:flex;gap:4px;overflow-x:auto;padding:8px 14px;position:sticky;top:64px;z-index:49}
+.deptnav button{background:none;border:none;color:#c9e7d4;font-size:13px;font-weight:700;padding:8px 14px;border-radius:16px;cursor:pointer;white-space:nowrap}
+.deptnav button:hover,.deptnav button.on{background:#7CFFB2;color:#0c2b18}
+.pioneer{display:inline-block;background:rgba(124,255,178,.12);border:1px solid #7CFFB2;color:#7CFFB2;font-weight:800;font-size:14px;padding:8px 20px;border-radius:20px;margin-bottom:12px}
+.ctarow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.btnY{background:#7CFFB2;color:#0c2b18;border:none;padding:13px 34px;border-radius:26px;font-weight:900;font-size:15px;cursor:pointer}
+.btnO{background:transparent;color:#fff;border:2px solid #7CFFB2;padding:12px 30px;border-radius:26px;font-weight:800;font-size:15px;cursor:pointer}
+.btnY:hover{transform:scale(1.04)}
+.rail{display:flex;gap:14px;overflow-x:auto;padding:6px 15px 18px;max-width:1150px;margin:0 auto}
+.rcard{flex:0 0 190px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);display:flex;flex-direction:column}
+.rcard img{width:100%;height:120px;object-fit:cover}
+.rcard .rb{padding:10px;font-size:12.5px;display:flex;flex-direction:column;gap:5px;flex:1}
+.rcard .rn{font-weight:800;min-height:34px}
+.rcard .rp{color:var(--purple);font-weight:900;font-size:15px}
+.rcard button{background:#0c2b18;color:#7CFFB2;border:none;padding:8px;border-radius:10px;font-weight:800;cursor:pointer;margin-top:auto}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:#fff;border-radius:14px;padding:10px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);font-size:13px}
+.chiprow a{color:#fff;text-decoration:none;font-weight:800;font-size:12px;padding:7px 13px;border-radius:14px}
+.pionbox{background:linear-gradient(135deg,#f3e5f5,#e8f5e9);border:2px solid #7CFFB2;border-radius:16px;padding:16px;text-align:center;font-size:14.5px}
+#linkRes{margin-top:10px}
+[dir="rtl"] .hsearch button{border-radius:20px 0 0 20px}
+[dir="rtl"] .hsearch{margin-left:0;margin-right:auto}
+[dir="rtl"] #sort{margin-left:0;margin-right:auto}
+[dir="rtl"] .offer a{margin-left:0;margin-right:auto}
+[dir="rtl"] .best{left:auto;right:10px}
+[dir="rtl"] #totalBtc{text-align:right}
+[dir="rtl"] .ibanbox{text-align:right}
+@media(max-width:640px){.hero h1{font-size:27px}.paycards{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar"></div>
+<header>
+<div class="logo">🪙 Minay<small data-i="tagline"></small></div>
+<div class="hsearch"><input id="search" data-i-ph="searchPh" oninput="render()"><button onclick="render()" data-i="searchBtn"></button></div>
+<select class="sel" id="langSel" onchange="setLang(this.value)">
+<option value="tr">🇹🇷 Türkçe</option><option value="ar">🇸🇦 العربية</option><option value="en">🇬🇧 English</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="es">🇪🇸 Español</option>
+</select>
+<select class="sel" id="curSel" onchange="setCur(this.value)">
+<option value="TRY">₺ TRY</option><option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="SAR">ر.س SAR</option><option value="AED">د.إ AED</option><option value="BTC">₿ BTC</option>
+</select>
+<button class="cart-btn" onclick="toggleDrawer(true)">🛒 <span data-i="cartBtn"></span> <span id="cartCount">0</span></button>
+</header>
+<nav class="deptnav" id="deptnav"></nav>
+<noscript><div style="background:#c62828;color:#fff;text-align:center;padding:12px;font-weight:700">⚠️ Minay needs JavaScript / Minay JavaScript gerektirir / يتطلب ميناي جافاسكربت</div></noscript>
+<section class="hero">
+<span class="pill" data-i="heroPill"></span>
+<h1>Minay <span data-i="heroTB"></span></h1>
+<div class="motto" data-i="motto"></div>
+<div class="pioneer" data-i="pioneer"></div>
+<p data-i="heroSub"></p>
+<div class="ctarow"><button class="btnY" onclick="scrollToGrid()" data-i="ctaShop"></button><button class="btnO" onclick="document.getElementById('linkSec').scrollIntoView({behavior:'smooth'})" data-i="ctaLink"></button></div>
+<div class="priv">
+<div>🚫 <span data-i="pv1"></span></div>
+<div>📍 <span data-i="pv2"></span></div>
+<div>₿ <span data-i="pv3"></span></div>
+<div>🏦 <span data-i="pv5"></span></div>
+<div>📖 <span data-i="pv4"></span></div>
+</div>
+<div class="stats">
+<div class="stat"><b id="statN">80+</b><span data-i="stP"></span></div>
+<div class="stat"><b>7</b><span data-i="stS"></span></div>
+<div class="stat"><b>4.8★</b><span data-i="stR"></span></div>
+<div class="stat"><b id="statCom">%3</b><span data-i="stC"></span></div>
+</div>
+</section>
+<section class="panel" id="founderSec">
+<h2 class="sec-title" data-i="fndT"></h2>
+<div class="box fndbox">
+<img class="fndphoto" src="img/founder.jpg" alt="Baran Avisat" onerror="this.outerHTML='<div class=\'fndphoto fndfb\'>BA</div>'">
+<div class="fndinfo">
+<div class="fndname">Baran Avisat <span class="verified">✔</span></div>
+<div class="fndrole" data-i="fndRole"></div>
+<p class="fndmsg" data-i="fndMsg"></p>
+<ul class="fndbul">
+<li data-i="fndB1"></li>
+<li data-i="fndB2"></li>
+<li data-i="fndB3"></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="stores"><h2 class="sec-title" data-i="storesT"></h2><div class="store-row" id="storeRow"></div></section>
+<section>
+<h2 class="sec-title" data-i="railBest"></h2>
+<div class="rail" id="railBest"></div>
+</section>
+<section>
+<h2 class="sec-title" data-i="railDeals"></h2>
+<div class="rail" id="railDeals"></div>
+</section>
+<section>
+<h2 class="sec-title" data-i="prodT"></h2>
+<div class="toolbar"><div class="cats" id="cats"></div><select id="sort" onchange="render()"></select></div>
+<div id="storeChips" style="max-width:1150px;margin:0 auto;padding:0 15px"></div>
+<div class="grid" id="grid"></div>
+</section>
+<section>
+<h2 class="sec-title" data-i="hubsT"></h2>
+<p style="text-align:center;color:#666;font-size:13.5px;margin:-6px 0 10px" data-i="hubsSub"></p>
+<div class="hub-grid" id="hubGrid"></div>
+</section>
+<section class="panel" id="linkSec">
+<h2 class="sec-title" data-i="linkT"></h2>
+<div class="box">
+<div style="font-size:14px;color:#555" data-i="linkSub"></div>
+<input id="linkUrl" data-i-ph="linkPh" style="width:100%;padding:12px;margin:10px 0 6px;border:2px solid #d1c4e9;border-radius:12px;font-size:13.5px;direction:ltr">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<input id="linkPrice" type="number" min="1" data-i-ph="linkPriceL" style="flex:1;min-width:130px;padding:12px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px">
+<input id="linkQty" type="number" min="1" value="1" data-i-ph="linkQtyL" style="width:110px;padding:12px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px">
+</div>
+<textarea id="linkAddr" data-i-ph="addrPh" rows="2" style="width:100%;padding:12px;margin:8px 0;border:2px solid #d1c4e9;border-radius:12px;font-size:14px"></textarea>
+<button class="bigbtn" onclick="linkCalc()" data-i="linkCalc"></button>
+<div id="linkRes"></div>
+</div>
+</section>
+<section class="panel">
+<h2 class="sec-title" data-i="howT"></h2>
+<div class="box"><div class="howto">
+<div><b>🛒</b><span data-i="h1"></span></div>
+<div><b>📍</b><span data-i="h2"></span></div>
+<div><b>💳</b><span data-i="h3"></span></div>
+<div><b>📦</b><span data-i="h4"></span></div>
+</div></div>
+</section>
+<section class="panel" id="trackSec">
+<h2 class="sec-title" data-i="trackT"></h2>
+<div class="box">
+<div style="font-size:14px;color:#666" data-i="trackSub"></div>
+<div class="trackrow"><input id="trackId" placeholder="MNY-XXXXXX"><button onclick="track()" data-i="trackBtn"></button></div>
+<div id="trackRes"></div>
+</div>
+</section>
+<section>
+<h2 class="sec-title" data-i="whyT"></h2>
+<div class="features">
+<div class="feat"><div class="ic">🕵️</div><b data-i="f1t"></b><p data-i="f1d"></p></div>
+<div class="feat"><div class="ic">💳</div><b data-i="f2t"></b><p data-i="f2d"></p></div>
+<div class="feat"><div class="ic">💚</div><b data-i="f5t"></b><p data-i="f5d"></p></div>
+<div class="feat"><div class="ic">📖</div><b data-i="f4t"></b><p data-i="f4d"></p></div>
+</div>
+</section>
+<section>
+<h2 class="sec-title" data-i="revT"></h2>
+<div class="revs">
+<div class="rev"><div class="stars">★★★★★</div><span data-i="r1"></span><br><b>— M.K.</b></div>
+<div class="rev"><div class="stars">★★★★★</div><span data-i="r2"></span><br><b>— A.H.</b></div>
+<div class="rev"><div class="stars">★★★★☆</div><span data-i="r3"></span><br><b>— S.D.</b></div>
+</div>
+</section>
+<section class="faq"><h2 class="sec-title" data-i="faqT"></h2><div id="faqBox"></div></section>
+<section class="panel" id="btcSec">
+<h2 class="sec-title" data-i="btcT"></h2>
+<div class="box">
+<div class="pionbox">🥇 <b data-i="pioneer"></b><br><span data-i="pioneerSub"></span></div>
+<div style="text-align:center;font-size:15px;margin:10px 0"><span data-i="btcRateL"></span>: <b id="btcRate" style="color:var(--purple);direction:ltr;display:inline-block">–</b></div>
+<div class="howto">
+<div><b>🚫</b><b style="font-size:15px" data-i="bw1t"></b><br><span data-i="bw1d" style="font-size:12.5px;color:#666"></span></div>
+<div><b>🏦</b><b style="font-size:15px" data-i="bw2t"></b><br><span data-i="bw2d" style="font-size:12.5px;color:#666"></span></div>
+<div><b>🕵️</b><b style="font-size:15px" data-i="bw3t"></b><br><span data-i="bw3d" style="font-size:12.5px;color:#666"></span></div>
+<div><b>🌍</b><b style="font-size:15px" data-i="bw4t"></b><br><span data-i="bw4d" style="font-size:12.5px;color:#666"></span></div>
+</div>
+</div>
+</section>
+<section class="panel">
+<h2 class="sec-title" data-i="walT"></h2>
+<div class="box wallet">
+<div data-i="walSub" style="font-size:14px;color:#666"></div>
+<div class="ibanbox"><div class="nm">Baran Avisat — TRY (₺)</div><div class="ib" id="ibanTR">TR10 0001 0090 1008 4013 0050 01</div><button onclick="copyTxt('TR100001009010084013005001',this)" data-i="copyBtn"></button></div>
+<div class="ibanbox"><div class="nm">Baran Avisat — USD ($)</div><div class="ib" id="ibanUS">TR80 0001 0090 1008 4013 0050 02</div><button onclick="copyTxt('TR800001009010084013005002',this)" data-i="copyBtn"></button></div>
+<div class="addr">bc1q8dhtdrndxsl70e97t8grydfe6pjue37zrhzf6c</div>
+<div class="wrow"><button class="btnG" onclick="copyAddr()" data-i="copyBtn"></button></div>
+<small data-i="walNote"></small>
+</div>
+</section>
+<footer>
+<div class="cols">
+<div><b>🪙 Minay</b><span data-i="ftAbout"></span><br>📧 baranavisat@gmail.com<br><br><b data-i="btcRateL"></b>: <span id="btcRateF" style="direction:ltr;display:inline-block">–</span></div>
+<div><b data-i="ftCats"></b><a href="#" onclick="footCat('hand');return false;" data-i="cat_hand"></a><br><a href="#" onclick="footCat('power');return false;" data-i="cat_power"></a><br><a href="#" onclick="footCat('electro');return false;" data-i="cat_electro"></a><br><a href="#" onclick="footCat('hardware');return false;" data-i="cat_hardware"></a><br><a href="#" onclick="footCat('measure');return false;" data-i="cat_measure"></a><br><a href="#" onclick="footCat('safety');return false;" data-i="cat_safety"></a><br><a href="#" onclick="footCat('office');return false;" data-i="cat_office"></a></div>
+<div><b data-i="ftStores"></b><a href="https://www.amazon.com.tr" target="_blank" rel="nofollow noopener">Amazon</a><br><a href="https://www.alibaba.com" target="_blank" rel="nofollow noopener">Alibaba</a><br><a href="https://www.aliexpress.com" target="_blank" rel="nofollow noopener">AliExpress</a><br><a href="https://www.trendyol.com" target="_blank" rel="nofollow noopener">Trendyol</a><br><a href="https://www.hepsiburada.com" target="_blank" rel="nofollow noopener">Hepsiburada</a><br><a href="https://www.n11.com" target="_blank" rel="nofollow noopener">n11</a></div>
+<div><b data-i="ftHelp"></b><a href="#" onclick="scrollToGrid();return false;" data-i="lnkProd"></a><br><a href="#linkSec" onclick="document.getElementById('linkSec').scrollIntoView({behavior:'smooth'});return false;" data-i="lnkLink"></a><br><a href="#btcSec" onclick="document.getElementById('btcSec').scrollIntoView({behavior:'smooth'});return false;">₿ Bitcoin</a><br><a href="#trackSec" onclick="document.getElementById('trackSec').scrollIntoView({behavior:'smooth'});return false;" data-i="lnkTrack"></a><br><a href="README.md" target="_blank">📖 README / MIT</a><br><a href="#" onclick="openAdmin();return false;" data-i="lnkAdmin"></a></div>
+</div>
+<div class="admin-link"><button onclick="openAdmin()" data-i="lnkAdmin"></button></div>
+<div class="disc" data-i="disc"></div>
+</footer>
+<div id="overlay" onclick="toggleDrawer(false);closeModal();closeAdmin()"></div>
+<aside id="drawer"><h2>🛒 <span data-i="cartBtn"></span></h2><div id="drawerItems"></div><div id="cartFoot" style="display:none"><div id="total"></div><div id="totalBtc"></div><button id="checkoutBtn" onclick="startCheckout()"></button></div></aside>
+<div id="modal"><div id="modalBody"></div></div>
+<div id="adminModal"><div id="adminBody"></div></div>
+<div id="toast"></div>
+<script>
+const ADMIN_EMAIL='baranavisat@gmail.com';
+const ADMIN_HASH='5dc25a61051965b4ea96a73701a3ba5e74a2be164b29347071471d9d2cc9dede';
+const BTC='bc1q8dhtdrndxsl70e97t8grydfe6pjue37zrhzf6c';
+const BANK={name:'Baran Avisat',TRY:'TR10 0001 0090 1008 4013 0050 01',USD:'TR80 0001 0090 1008 4013 0050 02'};
+function sGet(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return (window._mem&&window._mem[k]!==undefined)?window._mem[k]:d;}}
+function sSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){window._mem=window._mem||{};window._mem[k]=v;}}
+function sGetS(k,d){try{const v=localStorage.getItem(k);return v==null?d:v;}catch(e){return (window._mem&&window._mem[k]!==undefined)?window._mem[k]:d;}}
+function sStr(k,v){try{localStorage.setItem(k,v);}catch(e){window._mem=window._mem||{};window._mem[k]=v;}}
+function sDel(k){try{localStorage.removeItem(k);}catch(e){if(window._mem)delete window._mem[k];}}
+const STORES=[
+{name:'Amazon',color:'#FF9900',home:'https://www.amazon.com.tr',q:q=>'https://www.amazon.com.tr/s?k='+encodeURIComponent(q)},
+{name:'Trendyol',color:'#F27A1A',home:'https://www.trendyol.com',q:q=>'https://www.trendyol.com/sr?q='+encodeURIComponent(q)},
+{name:'Hepsiburada',color:'#FF6000',home:'https://www.hepsiburada.com',q:q=>'https://www.hepsiburada.com/ara?q='+encodeURIComponent(q)},
+{name:'AliExpress',color:'#E62E04',home:'https://www.aliexpress.com',q:q=>'https://www.aliexpress.com/wholesale?SearchText='+encodeURIComponent(q)},
+{name:'Alibaba',color:'#B25A00',home:'https://www.alibaba.com',q:q=>'https://www.alibaba.com/trade/search?searchText='+encodeURIComponent(q)},
+{name:'n11',color:'#7B2CBF',home:'https://www.n11.com',q:q=>'https://www.n11.com/arama?q='+encodeURIComponent(q)}];
+const HUBQ={hand:'el aletleri seti',power:'elektrikli el aletleri',electro:'elektronik hobi seti',hardware:'hırdavat nalbur',measure:'ölçü aletleri',safety:'iş güvenliği ekipmanları',office:'kırtasiye ofis'};
+const PRODUCTS=[
+{id:1,cat:'office',emoji:'🎒',rating:4.8,reviews:2314,query:'okul çantası',n:{tr:'Lüks Okul Çantası',ar:'حقيبة مدرسية فاخرة',en:'Luxury School Backpack'},offers:[['Amazon',3499],['Trendyol',3199],['Hepsiburada',3599]]},
+{id:2,cat:'office',emoji:'📓',rating:4.7,reviews:1876,query:'96 yaprak defter',n:{tr:'96 Yaprak Defter (10\u2019lu)',ar:'دفاتر 96 صفحة (10)',en:'96-Sheet Notebooks (10-pack)'},offers:[['Trendyol',599],['Amazon',649],['n11',579]]},
+{id:3,cat:'office',emoji:'🖊️',rating:4.9,reviews:3421,query:'tükenmez kalem seti 12 renk',n:{tr:'12 Renk Tükenmez Kalem',ar:'أقلام حبر ملونة (12)',en:'12-Color Ballpoint Pens'},offers:[['AliExpress',399],['Amazon',449],['Trendyol',429]]},
+{id:4,cat:'office',emoji:'✏️',rating:4.6,reviews:954,query:'kurşun kalem hb set',n:{tr:'HB Kurşun Kalem Seti',ar:'علبة أقلام رصاص HB',en:'HB Pencil Set'},offers:[['n11',289],['Hepsiburada',310],['Amazon',299]]},
+{id:5,cat:'office',emoji:'🎨',rating:4.8,reviews:2750,query:'24 lu kuru boya kalemi',n:{tr:'24 Renk Kuru Boya',ar:'ألوان خشبية 24 لون',en:'24 Colored Pencils'},offers:[['Trendyol',729],['Amazon',749],['AliExpress',699]]},
+{id:6,cat:'office',emoji:'🖌️',rating:4.7,reviews:1102,query:'sulu boya seti',n:{tr:'Sulu Boya Seti',ar:'علبة ألوان مائية',en:'Watercolor Set'},offers:[['Hepsiburada',899],['Trendyol',849],['Amazon',929]]},
+{id:7,cat:'office',emoji:'👝',rating:4.5,reviews:768,query:'kalem kutusu',n:{tr:'Şık Kalem Kutusu',ar:'مقلمة مدرسية أنيقة',en:'Stylish Pencil Case'},offers:[['AliExpress',499],['n11',549],['Amazon',559]]},
+{id:8,cat:'office',emoji:'📐',rating:4.6,reviews:623,query:'geometri seti pergel',n:{tr:'Geometri Seti',ar:'طقم أدوات هندسية',en:'Geometry Set'},offers:[['Trendyol',389],['Hepsiburada',410],['Amazon',399]]},
+{id:9,cat:'office',emoji:'🧽',rating:4.5,reviews:431,query:'silgi kalemtıraş seti',n:{tr:'Silgi + Kalemtıraş',ar:'ممحاة + مبراة',en:'Eraser + Sharpener'},offers:[['n11',139],['AliExpress',149],['Trendyol',159]]},
+{id:10,cat:'office',emoji:'🧴',rating:4.5,reviews:512,query:'stick yapıştırıcı',n:{tr:'Stick Yapıştırıcı',ar:'غراء لاصق',en:'Glue Stick'},offers:[['Amazon',249],['Hepsiburada',259],['Trendyol',239]]},
+{id:11,cat:'office',emoji:'📔',rating:4.7,reviews:890,query:'resim defteri büyük boy',n:{tr:'Büyük Resim Defteri',ar:'كراس رسم كبير',en:'Large Sketchbook'},offers:[['Trendyol',339],['Amazon',359],['n11',329]]},
+{id:12,cat:'office',emoji:'🔢',rating:4.9,reviews:1980,query:'bilimsel hesap makinesi',n:{tr:'Bilimsel Hesap Makinesi',ar:'آلة حاسبة علمية',en:'Scientific Calculator'},offers:[['Amazon',1799],['Hepsiburada',1849],['AliExpress',1699]]},
+{id:13,cat:'hand',emoji:'🔨',rating:4.8,reviews:1240,query:'marangoz çekici',n:{tr:'Marangoz Çekici',ar:'مطرقة نجار',en:'Claw Hammer'},offers:[['Trendyol',449],['Hepsiburada',475]]},
+{id:14,cat:'hand',emoji:'🪛',rating:4.7,reviews:986,query:'torx vida ucu seti',n:{tr:'Torx Vida Ucu Seti',ar:'طقم رؤوس مفكات توركس',en:'Torx Bit Set'},offers:[['Amazon',549],['Trendyol',529]]},
+{id:15,cat:'hand',emoji:'🔧',rating:4.6,reviews:874,query:'kurbağacık anahtar',n:{tr:'Kurbağacık Anahtar',ar:'مفتاح ربط قابل للتعديل',en:'Adjustable Wrench'},offers:[['Hepsiburada',379],['n11',365]]},
+{id:16,cat:'hand',emoji:'🗜️',rating:4.7,reviews:763,query:'kombine pense',n:{tr:'Kombine Pense',ar:'زرادية متعددة',en:'Combination Pliers'},offers:[['Trendyol',419],['Amazon',439]]},
+{id:17,cat:'power',emoji:'🪚',rating:4.9,reviews:1875,query:'akülü vidalama matkap',n:{tr:'Akülü Vidalama Matkap',ar:'مثقاب لاسلكي',en:'Cordless Drill'},offers:[['Trendyol',3849],['Hepsiburada',3990]]},
+{id:18,cat:'power',emoji:'⚙️',rating:4.7,reviews:1104,query:'avuç taşlama makinesi',n:{tr:'Avuç Taşlama',ar:'جلاخة زاوية',en:'Angle Grinder'},offers:[['Hepsiburada',2949],['Amazon',3090]]},
+{id:19,cat:'power',emoji:'🔥',rating:4.6,reviews:692,query:'havya seti lehim',n:{tr:'Havya Lehim Seti',ar:'طقم لحام كهربائي',en:'Soldering Iron Kit'},offers:[['Amazon',749],['AliExpress',690]]},
+{id:20,cat:'electro',emoji:'💻',rating:4.9,reviews:2210,query:'arduino uno',n:{tr:'Arduino Uno Kartı',ar:'لوحة أردوينو أونو',en:'Arduino Uno Board'},offers:[['Amazon',689],['AliExpress',640]]},
+{id:21,cat:'electro',emoji:'📟',rating:4.8,reviews:1340,query:'dijital multimetre',n:{tr:'Dijital Multimetre',ar:'ملتيميتر رقمي',en:'Digital Multimeter'},offers:[['Trendyol',949],['Hepsiburada',990]]},
+{id:22,cat:'electro',emoji:'💡',rating:4.5,reviews:518,query:'led diyot seti',n:{tr:'LED Diyot Seti (100\u2019lü)',ar:'طقم ليدات (100 قطعة)',en:'LED Diode Kit (100pc)'},offers:[['AliExpress',175],['Amazon',199]]},
+{id:23,cat:'electro',emoji:'🔌',rating:4.6,reviews:845,query:'usb c kablo hızlı şarj',n:{tr:'USB-C Hızlı Şarj Kablo',ar:'كابل USB-C سريع',en:'USB-C Fast Cable'},offers:[['Trendyol',219],['Hepsiburada',235]]},
+{id:24,cat:'hardware',emoji:'⚡',rating:4.7,reviews:1530,query:'suntalam vidası seti',n:{tr:'Vida + Dübel Seti (500\u2019lü)',ar:'براغي وخوابير (500)',en:'Screws & Anchors (500pc)'},offers:[['n11',359],['Trendyol',375]]},
+{id:25,cat:'hardware',emoji:'🔩',rating:4.6,reviews:927,query:'cıvata somun seti',n:{tr:'Cıvata + Somun (200\u2019lü)',ar:'براغي وصواميل (200)',en:'Bolts & Nuts (200pc)'},offers:[['Trendyol',319],['Hepsiburada',335]]},
+{id:26,cat:'hardware',emoji:'🧱',rating:4.5,reviews:612,query:'plastik dübel',n:{tr:'Plastik Dübel (100\u2019lü)',ar:'خوابير بلاستيك (100)',en:'Wall Plugs (100pc)'},offers:[['n11',189],['Trendyol',199]]},
+{id:27,cat:'measure',emoji:'📏',rating:4.7,reviews:1088,query:'şerit metre 5m',n:{tr:'Şerit Metre 5m',ar:'شريط قياس 5 أمتار',en:'Tape Measure 5m'},offers:[['Hepsiburada',229],['Trendyol',239]]},
+{id:28,cat:'measure',emoji:'📐',rating:4.8,reviews:745,query:'çelik cetvel 30cm',n:{tr:'Çelik Cetvel 30cm',ar:'مسطرة فولاذية 30 سم',en:'Steel Ruler 30cm'},offers:[['n11',159],['Amazon',175]]},
+{id:29,cat:'safety',emoji:'🧤',rating:4.6,reviews:534,query:'deri iş eldiveni',n:{tr:'Deri İş Eldiveni (M)',ar:'قفازات عمل (M)',en:'Leather Work Gloves (M)'},offers:[['Trendyol',169],['Hepsiburada',185]]},
+{id:30,cat:'safety',emoji:'🥽',rating:4.7,reviews:498,query:'iş güvenlik gözlüğü',n:{tr:'İş Güvenlik Gözlüğü',ar:'نظارات سلامة',en:'Safety Glasses'},offers:[['Amazon',189],['n11',179]]},
+{id:31,cat:'office',emoji:'✂️',rating:4.5,reviews:387,query:'ofis makası',n:{tr:'Ofis Makası',ar:'مقص مكتبي',en:'Office Scissors'},offers:[['Trendyol',209],['Hepsiburada',225]]},
+{id:32,cat:'office',emoji:'🎁',rating:4.4,reviews:356,query:'koli bandı',n:{tr:'Koli Bandı (6\u2019lı)',ar:'شريط تغليف (6)',en:'Packing Tape (6pc)'},offers:[['n11',259],['Trendyol',269]]},
+{id:33,cat:'hardware',emoji:'🛞',rating:4.6,reviews:289,query:'608 zz rulman',n:{tr:'Rulman 608 (8\u2019li)',ar:'رولمان 608 (8)',en:'Bearings 608 (8pc)'},offers:[['AliExpress',335],['Amazon',359]]},
+{id:34,cat:'hardware',emoji:'🔋',rating:4.8,reviews:1102,query:'aa şarjlı pil',n:{tr:'AA Şarjlı Pil (4\u2019lü)',ar:'بطاريات AA قابلة للشحن (4)',en:'Rechargeable AA (4pc)'},offers:[['AliExpress',419],['Trendyol',435]]}];
+const R9=x=>Math.max(9,Math.round(x/10)*10-1);
+const VARS=[
+{b:24,items:[{t:"300\u2019lü",a:'300 قطعة',e:'300pc',p:249},{t:"1000\u2019li",a:'1000 قطعة',e:'1000pc',p:599}]},
+{b:25,items:[{t:"100\u2019lü",a:'100 قطعة',e:'100pc',p:189},{t:"500\u2019lü",a:'500 قطعة',e:'500pc',p:699}]},
+{b:26,items:[{t:"50\u2019li",a:'50 قطعة',e:'50pc',p:109},{t:"200\u2019lü",a:'200 قطعة',e:'200pc',p:329}]},
+{b:22,items:[{t:"50\u2019li",a:'50 قطعة',e:'50pc',p:99},{t:"200\u2019lü",a:'200 قطعة',e:'200pc',p:329}]},
+{b:23,items:[{t:'2m',a:'2 متر',e:'2m',p:269},{t:'3m',a:'3 أمتار',e:'3m',p:329}]},
+{b:34,items:[{t:"8\u2019li",a:'8 قطع',e:'8pc',p:799},{t:"12\u2019li",a:'12 قطعة',e:'12pc',p:1149}]},
+{b:33,items:[{t:"4\u2019lü",a:'4 قطع',e:'4pc',p:189},{t:"16\u2019lı",a:'16 قطعة',e:'16pc',p:599}]},
+{b:27,items:[{t:'3m',a:'3 أمتار',e:'3m',p:159},{t:'8m',a:'8 أمتار',e:'8m',p:329}]},
+{b:29,items:[{t:'(L)',a:'(L)',e:'(L)',p:175},{t:'(XL)',a:'(XL)',e:'(XL)',p:185}]},
+{b:30,items:[{t:'Fümeli',a:'داكنة',e:'Smoked',p:209}]},
+{b:9,items:[{t:"8\u2019li",a:'8 قطع',e:'8pc',p:249}]},
+{b:10,items:[{t:"3\u2019lü",a:'3 قطع',e:'3pc',p:649},{t:"6\u2019lı",a:'6 قطع',e:'6pc',p:1199}]},
+{b:3,items:[{t:"24\u2019lü",a:'24 لون',e:'24 colors',p:749}]},
+{b:4,items:[{t:"24\u2019lü",a:'24 قلم',e:'24pc',p:549}]},
+{b:2,items:[{t:"5\u2019li",a:'5 دفاتر',e:'5-pack',p:329},{t:"20\u2019li",a:'20 دفتر',e:'20-pack',p:1099}]},
+{b:5,items:[{t:"12\u2019li",a:'12 لون',e:'12 colors',p:399},{t:"36\u2019lı",a:'36 لون',e:'36 colors',p:999}]},
+{b:32,items:[{t:"3\u2019lü",a:'3 قطع',e:'3pc',p:149},{t:"12\u2019li",a:'12 قطعة',e:'12pc',p:479}]},
+{b:31,items:[{t:"2\u2019li Set",a:'طقم قطعتين',e:'2-pack',p:379}]},
+{b:11,items:[{t:'A3',a:'A3',e:'A3',p:499}]},
+{b:14,items:[{t:"64\u2019lü",a:'64 قطعة',e:'64pc',p:899}]},
+{b:17,items:[{t:'20V',a:'20 فولت',e:'20V',p:5299}]},
+{b:13,items:[{t:'500g',a:'500 غرام',e:'500g',p:549}]},
+{b:15,items:[{t:'10"',a:'10 إنش',e:'10 inch',p:449}]},
+{b:16,items:[{t:'200mm',a:'200 ملم',e:'200mm',p:499}]},
+{b:6,items:[{t:"24\u2019lü",a:'24 لون',e:'24 colors',p:1299}]},
+{b:8,items:[{t:'Metal',a:'معدني',e:'Metal',p:649}]},
+{b:1,items:[{t:'Mavi',a:'أزرق',e:'Blue',p:3499},{t:'Kırmızı',a:'أحمر',e:'Red',p:3499}]},
+{b:19,items:[{t:'60W',a:'60 واط',e:'60W',p:949}]},
+{b:18,items:[{t:'1200W',a:'1200 واط',e:'1200W',p:3999}]},
+{b:20,items:[{t:'+ Sensör Kiti',a:'+ طقم حساسات',e:'+ Sensor Kit',p:1299}]},
+{b:21,items:[{t:'Pro',a:'احترافي',e:'Pro',p:1590}]},
+{b:7,items:[{t:'Büyük Boy',a:'كبير',e:'Large',p:749}]},
+{b:12,items:[{t:'Temel',a:'أساسي',e:'Basic',p:899}]}];
+(function buildVariants(){
+const base=id=>PRODUCTS.find(x=>x.id===id);
+let vid=1000;
+VARS.forEach(v=>{const b=base(v.b);if(!b)return;const f0=Math.min(...b.offers.map(o=>o[1]));
+v.items.forEach(it=>{const f=it.p/f0;
+PRODUCTS.push({id:vid++,cat:b.cat,emoji:b.emoji,rating:b.rating,reviews:Math.round(b.reviews*0.6),query:b.query,img:(b.id===32?'img/p32.png':'img/p'+b.id+'.jpg'),
+n:{tr:b.n.tr+' '+it.t,ar:b.n.ar+' '+it.a,en:b.n.en+' '+it.e},
+offers:b.offers.map(o=>[o[0],R9(o[1]*f)])});});});
+try{sGet('minay_custom',[]).forEach(c=>{PRODUCTS.push(c);});}catch(e){}
+})();
+const T={
+tr:{tagline:'Tam Özgürlük ve Gizlilik',motto:'Özgürlüğün ve gizliliğin adresi',searchPh:'🔍 Ürün ara: matkap, vida, arduino...',searchBtn:'Ara',cartBtn:'Sepet',heroPill:'🛍️ ÜYELİK YOK • 80+ ÜRÜN • BTC VEYA HAVALE',heroTB:'Özgür Mağaza',heroSub:'Vidadan matkaba, kâğıttan elektroniğe — fotoğraflı onlarca ürün, kategori hub\u2019larıyla milyonlara uzanan katalog. Hesap yok, e-posta yok. Adresi yaz, BTC veya havale ile öde.',pv1:'Kayıt yok',pv2:'Sadece adres yeterli',pv3:'BTC gizli ödeme',pv5:'Havale: TRY + USD',pv4:'Açık kaynak (MIT)',stP:'Ürün',stS:'Kategori',stR:'Alıcı puanı',stC:'Komisyon',storesT:'🏬 Fiyat Referansı: Pazaryerleri',visit:'Mağazaya Git',activeOn:'üründe',prodT:'🧰 Tüm Ürünler',hubsT:'🌐 Kategoride Milyonlarca Ürün Daha',hubsSub:'Aradığın özel ürün mü? Kategorinin dev mağaza sayfasına tek tıkla geç — milyonlarca ürün seni bekliyor.',cat_all:'Tümü',cat_hand:'El Aletleri',cat_power:'Elektrikli Aletler',cat_electro:'Elektronik',cat_hardware:'Hırdavat & Yedek Parça',cat_measure:'Ölçü',cat_safety:'Güvenlik',cat_office:'Ofis & Okul',s_rec:'Sırala: Önerilen',s_low:'Fiyat artan',s_high:'Fiyat azalan',s_rate:'Puana göre',s_disc:'İndirime göre',cheapest:'EN UCUZ',diffW:'fark',revW:'değerlendirme',viewStore:'Referans',compare:'İncele 🔍',addBtn:'Sepete Ekle 🛒',none:'Sonuç yok 🔍',minayPrice:'Minay fiyatı (komisyon dahil)',btcLine:'BTC karşılığı',howT:'🚀 Nasıl Çalışır?',h1:'Sepete ekle — hesap yok',h2:'Sadece adresi yaz',h3:'BTC veya havale ile öde',h4:'ID ile takip et',trackT:'📦 Sipariş Takibi (sadece ID)',trackSub:'Sipariş ID\u2019nizi yazın. Başka bilgi gerekmez.',trackPh:'MNY-XXXXXX',trackBtn:'Sorgula',trackNone:'Bulunamadı ⚠️',stPrep:'Hazırlanıyor 📦',stWait:'Havale bekleniyor 🏦',items:'ürün',total:'Toplam',addrL:'Teslimat adresi',whyT:'💎 Neden Minay?',f1t:'Sıfır Kayıt',f1d:'İsim, e-posta, telefon yok.',f2t:'Çift Ödeme',f2d:'BTC (gizli) veya havale (TRY/USD).',f5t:'Bankası Olmayana BTC',f5d:'Banka hesabın yoksa sorun değil — Bitcoin herkese açık.',f4t:'Açık Kaynak',f4d:'MIT lisanslı kod, sınırsız ürün içe aktarma.',revT:'⭐ Müşteriler',r1:'"2 dakikada aldım, kimse adımı sormadı."',r2:'"Matkap + vida seti tek adresle kapımda."',r3:'"Havale de var, BTC de — çok pratik."',faqT:'❓ Sorular',q1:'Gerçekten bilgi istenmiyor mu?',a1:'BTC ile ödemede: evet, sadece adres. Havale ile ödemede de isim/e-posta istemeyiz; transfer açıklamasına sipariş ID\u2019nizi yazmanız yeterli.',q2:'Nasıl öderim?',a2:'İki yol: 1) Bitcoin — tam gizlilik, sadece adres. 2) Havale/EFT — TRY veya USD IBAN\u2019a, açıklamaya sipariş ID.',q3:'Banka hesabım yok, ne yaparım?',a3:'İşte BTC bunun için var! Bitcoin ile kimseye bilgi vermeden, banka olmadan ödeyebilirsiniz.',q4:'Kod açık kaynak mı?',a4:'Evet, MIT. Admin panelinden JSON ile sınırsız ürün ekleyebilirsiniz.',q5:'Milyonlarca ürüne nasıl ulaşırım?',a5:'Sitede 80+ fotoğraflı ürün hazır. Kategori hub\u2019ları sizi mağazaların milyonluk kataloglarına götürür; beğendiğinizi ID ile bize de sipariş edebilirsiniz.',walT:'💳 Ödeme Hesapları',walSub:'Havale (TRY/USD) veya Bitcoin — size uygun olanı seçin.',copyBtn:'Kopyala 📋',copied:'Kopyalandı ✅',walNote:'Havale açıklamasına sipariş ID\u2019nizi yazmayı unutmayın.',ftAbout:'Kayıtsız, BTC/havale ile çalışan açık kaynaklı özgür mağaza.',ftStores:'🛍️ Referans',ftLinks:'🔗 Erişim',lnkProd:'Ürünler',lnkAdmin:'Yönetim',disc:'Minay bağımsızdır; platformların resmi şubesi değildir. Kurlar temsilidir. Ürün görselleri: Wikimedia Commons. Kod: MIT. © 2026 Minay.',cartEmpty:'Sepet boş 🛒',cartEmpty2:'Bir şeyler ekle!',remove:'❌',coBtn:'Adres + Ödeme ile Bitir 🚀',coAddrT:'📍 Adım 1 — Teslimat Adresi (tek gereken bilgi)',addrPh:'Mahalle, cadde, bina, daire, şehir... (sadece adres)',back:'← Geri',next:'Devam →',payChoose:'💳 Adım 2 — Ödeme Yöntemi',mBtcT:'₿ Bitcoin',mBtcD:'Tam gizli • sadece adres',mBankT:'🏦 Havale / EFT',mBankD:'TRY veya USD • açıklamaya ID',payT:'₿ Bitcoin Ödemesi',payBankT:'🏦 Havale / EFT',bankTRY:'TRY Hesabı (₺)',bankUSD:'USD Hesabı ($)',accName:'Hesap Adı',ibanL:'IBAN',refL:'Açıklamaya yazın (şart)',sentBtn:'Gönderdim ✅',bankNote:'Transfer açıklamasına sipariş ID\u2019nizi yazmayı unutmayın, yoksa ödemeniz eşleşmez.',sendExact:'Gönderilecek tutar (tam):',paidBtn:'Ödemeyi Yaptım ✅',okT:'🎉 Sipariş Alındı!',okSub:'ID\u2019nizi saklayın — takip anahtarınız.',copyId:'ID\u2019yi Kopyala',newOrder:'Yeni Sipariş',needAddr:'Önce adresi yazın ⚠️',admT:'🔐 Yönetim',admEmail:'E-posta',admPass:'Şifre',admLogin:'Giriş',admErr:'Hatalı ⚠️',admOut:'Çıkış',tabO:'Siparişler',tabL:'Yönlendirmeler',tabC:'Komisyon',tabF:'Kurlar',tabA:'Duyuru',tabP:'Ürünler',comL:'Komisyon (%)',save:'Kaydet',saved:'Kaydedildi ✅',fxNote:'1 birim = X TRY (temsili)',annL:'Üst bant',ordNone:'Sipariş yok.',leadsNone:'Yönlendirme yok.',cId:'ID',cTime:'Zaman',cBtc:'Tutar',cM:'Yöntem',cAddr:'Adres',cProd:'Ürün',cStore:'Mağaza',pNameL:'Ürün adı (TR)',pPriceL:'Fiyat (TRY)',pCatL:'Kategori',pImgL:'Görsel (img/p1.jpg veya URL)',pQueryL:'Mağaza araması',pAdd:'Ürün Ekle',pImpL:'JSON içe aktar (dizi yapıştır)',pExp:'Dışa Aktar',addedP:'Eklendi ✅',added:'Sepete eklendi ✅',curL:'Para',clearAll:'Tümünü Sil',pioneer:'🥇 Bitcoin ile gizli alışverişi başlatan ilk mağaza',fndT:'👔 Kurucumuz',fndRole:'Minay Kurucusu',fndMsg:'"Yüzümü gösteriyorum çünkü işime kefilim. Ama sizden tek bir bilgi bile istemiyorum — gizliliğiniz, özgürlüğünüz kadar kutsal."',fndB1:'Banka hesapları kendi adına — IBAN\u2019daki isimle birebir ✔',fndB2:'BTC cüzdanı herkese açık — zincirde doğrulanabilir',fndB3:'Kurucu şeffaf, müşteriler gizli — bilgi toplanmaz',stRev:'İnceleniyor 🔍',stConf:'Onaylandı ✅',stCancel:'İptal edildi ✕',txPh:'İşlem ID / txid (isteğe bağlı)',revNote:'Ödeme bildiriminiz alındı — ekip doğruladıktan sonra siparişiniz onaylanıp kargoya verilecek. Büyük platformlardaki gibi: ödeme doğrulanmadan onay yok.',q7:'Siparişim ne zaman onaylanır?',a7:'Önce ödeme bildirimi alınır (inceleme), ekip BTC\u2019yi zincirde / havaleyi dekontta doğrular, sonra onaylanır ve kargoya verilir. Her adımı ID ile takip edersiniz.',pioneerSub:'Bunu başlatan ilk biziz — gizli BTC alışverişinde öncüyüz.',ctaShop:'Alışverişe Başla 🛒',ctaLink:'🔗 Link ile Sipariş',searchIn:'mağazalarda ara:',railBest:'🔥 Çok Satanlar',railDeals:'💸 Günün Fırsatları',linkT:'🔗 Link ile Sipariş — Her Siteden Her Ürün',linkSub:'Amazon, Alibaba, Trendyol... fark etmez! Ürün bağlantısını yapıştır, fiyatını yaz, adresi ekle — gerisini Minay halleder. BTC veya havale ile öde.',linkPh:'https://... ürün bağlantısı',linkPriceL:'Ürün fiyatı (TRY)',linkQtyL:'Adet',linkCalc:'Hesapla ve Öde →',linkNeed:'Bağlantı, fiyat ve adres gerekli ⚠️',btcT:'₿ Neden Bitcoin? Paranın Özgürlüğü',btcRateL:'Güncel kur',bw1t:'🚫 Sansürlenemez',bw1d:'Hiçbir banka veya devlet ödemeni durduramaz.',bw2t:'🏦 Bankasız Hayat',bw2d:'Milyonlarca bankasız insan ilk kez alışveriş yapar.',bw3t:'🕵️ Gerçek Gizlilik',bw3d:'Adın yok, iz yok — sadece adres ve BTC.',bw4t:'🌍 Küresel Para',bw4d:'7/24, sınır tanımadan, dakikalar içinde.',ftCats:'📂 Kategoriler',ftHelp:'🆘 Yardım',lnkTrack:'Sipariş Takibi',lnkLink:'Link ile Sipariş',q6:'Bağlantı ile nasıl sipariş veririm?',a6:'Ürün bağlantısını, fiyatını ve adresini yazın; BTC veya havale ile ödeyin. Ekibimiz ürünü sizin için satın alıp adresinize gönderir.'},
+ar:{tagline:'الحرية الكاملة والسرية',motto:'عنوان الحرية والسرية',searchPh:'🔍 ابحث: مثقاب، براغي...',searchBtn:'بحث',cartBtn:'السلة',heroPill:'🛍️ بدون عضوية • +80 منتج • بتكوين أو تحويل',heroTB:'المتجر الحر',heroSub:'من البرغي للمثقاب ومن الورق للإلكترونيات — عشرات المنتجات المصورة وكتالوج يمتد للملايين عبر الأسواق. لا حساب ولا بريد. اكتب العنوان وادفع بالبتكوين أو التحويل.',pv1:'بدون تسجيل',pv2:'العنوان يكفي',pv3:'بتكوين سري',pv5:'تحويل: ليرة + دولار',pv4:'مفتوح المصدر',stP:'منتج',stS:'فئات',stR:'التقييم',stC:'العمولة',storesT:'🏬 مرجع الأسعار',visit:'عرض',activeOn:'منتج',prodT:'🧰 كل المنتجات',hubsT:'🌐 ملايين المنتجات في الفئات',hubsSub:'تريد منتجاً خاصاً؟ انتقل لصفحة الفئة في المتاجر الكبرى بنقرة — الملايين بانتظارك.',cat_all:'الكل',cat_hand:'أدوات يدوية',cat_power:'أدوات كهربائية',cat_electro:'إلكترونيات',cat_hardware:'خردوات وقطع غيار',cat_measure:'قياس',cat_safety:'سلامة',cat_office:'مكتب ومدرسة',s_rec:'الموصى به',s_low:'الأقل سعراً',s_high:'الأعلى سعراً',s_rate:'التقييم',s_disc:'الخصم',cheapest:'الأرخص',diffW:'فرق',revW:'تقييم',viewStore:'مرجع',compare:'تفاصيل 🔍',addBtn:'أضف 🛒',none:'لا نتائج 🔍',minayPrice:'سعر ميناي (شامل العمولة)',btcLine:'مقابل البتكوين',howT:'🚀 كيف يعمل؟',h1:'أضف للسلة — بدون حساب',h2:'اكتب العنوان فقط',h3:'ادفع بالبتكوين أو التحويل',h4:'تابع بالرقم',trackT:'📦 التتبع (بالرقم فقط)',trackSub:'اكتب رقم الطلب فقط.',trackPh:'MNY-XXXXXX',trackBtn:'استعلم',trackNone:'غير موجود ⚠️',stPrep:'قيد التجهيز 📦',stWait:'بانتظار التحويل 🏦',items:'منتج',total:'الإجمالي',addrL:'عنوان التسليم',whyT:'💎 لماذا ميناي؟',f1t:'صفر تسجيل',f1d:'لا اسم ولا بريد.',f2t:'دفع مزدوج',f2d:'بتكوين (سري) أو تحويل (ليرة/دولار).',f5t:'لا تملك بنكاً؟ البتكوين',f5d:'لا مشكلة — البتكوين متاح للجميع بدون بنك.',f4t:'مفتوح المصدر',f4d:'MIT وإضافة منتجات غير محدودة.',revT:'⭐ العملاء',r1:'"اشتريت بدقيقتين دون أن يسألني أحد."',r2:'"مثقاب وبراغي بعنوان واحد."',r3:'"تحويل وبتكوين معاً — عملي جداً."',faqT:'❓ أسئلة',q1:'حقاً بدون معلومات؟',a1:'بالبتكوين: نعم، العنوان فقط. وبالتحويل أيضاً لا نطلب اسماً؛ يكفي كتابة رقم الطلب في البيان.',q2:'كيف أدفع؟',a2:'طريقتان: 1) بتكوين — سرية تامة. 2) تحويل بنكي — ليرة أو دولار مع كتابة رقم الطلب.',q3:'لا أملك حساباً بنكياً؟',a3:'لهذا يوجد البتكوين! ادفع بدون بنك وبدون معلومات.',q4:'الكود مفتوح؟',a4:'نعم MIT. أضف منتجات غير محدودة عبر JSON من لوحة الإدارة.',q5:'كيف أصل للملايين؟',a5:'في الموقع +80 منتجاً مصوراً. وروابط الفئات تأخذك لكتالوجات المتاجر المليونية.',walT:'💳 حسابات الدفع',walSub:'تحويل (ليرة/دولار) أو بتكوين — اختر ما يناسبك.',copyBtn:'نسخ 📋',copied:'تم ✅',walNote:'لا تنس رقم الطلب في بيان التحويل.',ftAbout:'متجر حر مفتوح المصدر بدون تسجيل.',ftStores:'🛍️ مرجع',ftLinks:'🔗 وصول',lnkProd:'المنتجات',lnkAdmin:'الإدارة',disc:'ميناي مستقل. الأسعار استرشادية. الصور: Wikimedia Commons. الكود: MIT. © 2026 ميناي.',cartEmpty:'فارغة 🛒',cartEmpty2:'أضف شيئاً!',remove:'❌',coBtn:'إتمام بالعنوان + الدفع 🚀',coAddrT:'📍 الخطوة 1 — العنوان (المعلومة الوحيدة)',addrPh:'الحي، الشارع، المدينة... (العنوان فقط)',back:'← رجوع',next:'تابع →',payChoose:'💳 الخطوة 2 — طريقة الدفع',mBtcT:'₿ بتكوين',mBtcD:'سري تماماً • العنوان فقط',mBankT:'🏦 تحويل بنكي',mBankD:'ليرة أو دولار • الرقم في البيان',payT:'₿ دفع البتكوين',payBankT:'🏦 تحويل بنكي',bankTRY:'حساب الليرة (₺)',bankUSD:'حساب الدولار ($)',accName:'اسم الحساب',ibanL:'الآيبان',refL:'اكتب في البيان (إلزامي)',sentBtn:'تم التحويل ✅',bankNote:'لا تنس رقم الطلب في البيان وإلا لن نطابق دفعتك.',sendExact:'المبلغ (بالضبط):',paidBtn:'تم الدفع ✅',okT:'🎉 تم الطلب!',okSub:'احفظ رقمك — مفتاح المتابعة.',copyId:'نسخ الرقم',newOrder:'طلب جديد',needAddr:'اكتب العنوان ⚠️',admT:'🔐 الإدارة',admEmail:'البريد',admPass:'السر',admLogin:'دخول',admErr:'خطأ ⚠️',admOut:'خروج',tabO:'الطلبات',tabL:'التوجيهات',tabC:'العمولة',tabF:'العملات',tabA:'الإعلان',tabP:'المنتجات',comL:'العمولة (%)',save:'حفظ',saved:'تم ✅',fxNote:'الوحدة = X ليرة',annL:'الشريط',ordNone:'لا طلبات.',leadsNone:'لا توجيهات.',cId:'الرقم',cTime:'الوقت',cBtc:'المبلغ',cM:'الطريقة',cAddr:'العنوان',cProd:'المنتج',cStore:'المتجر',pNameL:'الاسم (TR)',pPriceL:'السعر (ليرة)',pCatL:'الفئة',pImgL:'الصورة',pQueryL:'بحث المتجر',pAdd:'أضف منتجاً',pImpL:'استيراد JSON',pExp:'تصدير',addedP:'أضيف ✅',added:'أضيف ✅',curL:'العملة',clearAll:'مسح الكل',pioneer:'🥇 أول متجر يبدأ التسوق السري بالبتكوين',fndT:'👔 مؤسسنا',fndRole:'مؤسس ميناي',fndMsg:'"أُظهر وجهي لأني كفيل بعملي. لكنني لا أطلب منك أي معلومة — سريتك مقدسة كحريتك."',fndB1:'الحسابات البنكية باسمه — تطابق الآيبان ✔',fndB2:'محفظة البتكوين علنية — قابلة للتحقق على البلوكشين',fndB3:'المؤسس شفاف والعملاء سريون — لا جمع للبيانات',stRev:'قيد المراجعة 🔍',stConf:'تم التأكيد ✅',stCancel:'ملغي ✕',txPh:'رقم المعاملة (اختياري)',revNote:'استلمنا إشعار الدفع — بعد التحقق سيُؤكد طلبك ويُشحن. كالمنصات الكبرى: لا تأكيد قبل التحقق من الدفع.',q7:'متى يُؤكد طلبي؟',a7:'أولاً إشعار الدفع (مراجعة)، ثم نتحقق من البتكوين أو التحويل، ثم التأكيد والشحن. تابع كل خطوة بالرقم.',pioneerSub:'نحن أول من بدأ — رواد التسوق السري بالبتكوين.',ctaShop:'ابدأ التسوق 🛒',ctaLink:'🔗 اطلب برابط',searchIn:'ابحث في المتاجر:',railBest:'🔥 الأكثر مبيعاً',railDeals:'💸 عروض اليوم',linkT:'🔗 اطلب برابط — أي منتج من أي موقع',linkSub:'أمازون أو علي بابا أو غيرها! الصق رابط المنتج واكتب سعره وعنوانك — ونتولى الباقي. ادفع بالبتكوين أو التحويل.',linkPh:'رابط المنتج https://...',linkPriceL:'سعر المنتج (ليرة)',linkQtyL:'العدد',linkCalc:'احسب وادفع →',linkNeed:'الرابط والسعر والعنوان مطلوبة ⚠️',btcT:'₿ لماذا البتكوين؟ حرية المال',btcRateL:'السعر الحالي',bw1t:'🚫 لا رقابة',bw1d:'لا بنك ولا حكومة توقف دفعتك.',bw2t:'🏦 حياة بلا بنوك',bw2d:'الملايين بلا بنوك يتسوقون أول مرة.',bw3t:'🕵️ سرية حقيقية',bw3d:'لا اسم ولا أثر — عنوان وبتكوين فقط.',bw4t:'🌍 عملة عالمية',bw4d:'على مدار الساعة بلا حدود.',ftCats:'📂 الفئات',ftHelp:'🆘 مساعدة',lnkTrack:'تتبع الطلب',lnkLink:'اطلب برابط',q6:'كيف أطلب برابط؟',a6:'الصق الرابط واكتب السعر والعنوان وادفع — نشتري المنتج لك ونرسله لعنوانك.'},
+en:{tagline:'Total Freedom & Privacy',motto:'The address of freedom and privacy',searchPh:'🔍 Search: drill, screws...',searchBtn:'Go',cartBtn:'Cart',heroPill:'🛍️ NO ACCOUNTS • 80+ PRODUCTS • BTC OR TRANSFER',heroTB:'Free Store',heroSub:'From screws to drills, paper to electronics — dozens of photographed products plus a catalog reaching millions via marketplaces. No account, no email. Address only, pay by BTC or transfer.',pv1:'No registration',pv2:'Address is enough',pv3:'Private BTC',pv5:'Transfer: TRY + USD',pv4:'Open source',stP:'Products',stS:'Categories',stR:'Rating',stC:'Commission',storesT:'🏬 Price Reference',visit:'View',activeOn:'products',prodT:'🧰 All Products',hubsT:'🌐 Millions More per Category',hubsSub:'Need something special? Jump to the category\u2019s mega-store page — millions await.',cat_all:'All',cat_hand:'Hand Tools',cat_power:'Power Tools',cat_electro:'Electronics',cat_hardware:'Hardware & Spares',cat_measure:'Measuring',cat_safety:'Safety',cat_office:'Office & School',s_rec:'Sort: Featured',s_low:'Price low',s_high:'Price high',s_rate:'Rating',s_disc:'Discount',cheapest:'CHEAPEST',diffW:'spread',revW:'reviews',viewStore:'Ref',compare:'Details 🔍',addBtn:'Add 🛒',none:'No results 🔍',minayPrice:'Minay price (incl. commission)',btcLine:'BTC equivalent',howT:'🚀 How It Works',h1:'Add — no account',h2:'Address only',h3:'Pay BTC or transfer',h4:'Track by ID',trackT:'📦 Tracking (ID only)',trackSub:'Enter your order ID only.',trackPh:'MNY-XXXXXX',trackBtn:'Track',trackNone:'Not found ⚠️',stPrep:'Preparing 📦',stWait:'Awaiting transfer 🏦',items:'items',total:'Total',addrL:'Delivery address',whyT:'💎 Why Minay?',f1t:'Zero Registration',f1d:'No name, no email.',f2t:'Dual Payment',f2d:'BTC (private) or transfer (TRY/USD).',f5t:'No Bank? Use BTC',f5d:'No problem — Bitcoin is open to everyone, no bank needed.',f4t:'Open Source',f4d:'MIT code, unlimited product import.',revT:'⭐ Customers',r1:'"Bought in 2 minutes, no questions."',r2:'"Drill + screws, one address."',r3:'"Transfer and BTC together — brilliant."',faqT:'❓ Questions',q1:'Really no data?',a1:'With BTC: yes, address only. With transfer we also ask for no name; just put the order ID in the reference.',q2:'How to pay?',a2:'Two ways: 1) Bitcoin — full privacy. 2) Bank transfer — TRY or USD with order ID in reference.',q3:'No bank account?',a3:'That\u2019s what BTC is for! Pay with no bank and no data.',q4:'Open code?',a4:'Yes, MIT. Import unlimited products via JSON in admin.',q5:'How to reach millions?',a5:'80+ photographed products on-site. Category hubs open the stores\u2019 million-item catalogs.',walT:'💳 Payment Accounts',walSub:'Transfer (TRY/USD) or Bitcoin — your choice.',copyBtn:'Copy 📋',copied:'Done ✅',walNote:'Don\u2019t forget the order ID in the reference.',ftAbout:'Registration-free open-source free store.',ftStores:'🛍️ Reference',ftLinks:'🔗 Access',lnkProd:'Products',lnkAdmin:'Admin',disc:'Minay is independent. Rates indicative. Images: Wikimedia Commons. Code: MIT. © 2026 Minay.',cartEmpty:'Empty 🛒',cartEmpty2:'Add something!',remove:'❌',coBtn:'Finish: Address + Pay 🚀',coAddrT:'📍 Step 1 — Address (only info)',addrPh:'Street, building, city... (address only)',back:'← Back',next:'Next →',payChoose:'💳 Step 2 — Payment Method',mBtcT:'₿ Bitcoin',mBtcD:'Fully private • address only',mBankT:'🏦 Bank Transfer',mBankD:'TRY or USD • ID in reference',payT:'₿ Bitcoin Payment',payBankT:'🏦 Bank Transfer',bankTRY:'TRY Account (₺)',bankUSD:'USD Account ($)',accName:'Account Name',ibanL:'IBAN',refL:'Write in reference (required)',sentBtn:'I Sent It ✅',bankNote:'Don\u2019t forget the order ID in the reference or we can\u2019t match it.',sendExact:'Send exactly:',paidBtn:'I Paid ✅',okT:'🎉 Order Received!',okSub:'Keep your ID — tracking key.',copyId:'Copy ID',newOrder:'New Order',needAddr:'Address first ⚠️',admT:'🔐 Admin',admEmail:'Email',admPass:'Password',admLogin:'Login',admErr:'Wrong ⚠️',admOut:'Logout',tabO:'Orders',tabL:'Leads',tabC:'Commission',tabF:'Rates',tabA:'Banner',tabP:'Products',comL:'Commission (%)',save:'Save',saved:'Saved ✅',fxNote:'1 unit = X TRY',annL:'Top banner',ordNone:'No orders.',leadsNone:'No leads.',cId:'ID',cTime:'Time',cBtc:'Amount',cM:'Method',cAddr:'Address',cProd:'Product',cStore:'Store',pNameL:'Name (TR)',pPriceL:'Price (TRY)',pCatL:'Category',pImgL:'Image',pQueryL:'Store search',pAdd:'Add Product',pImpL:'Import JSON',pExp:'Export',addedP:'Added ✅',added:'Added ✅',curL:'Currency',clearAll:'Clear All',pioneer:'🥇 The first store to launch private Bitcoin shopping',fndT:'👔 Our Founder',fndRole:'Founder of Minay',fndMsg:'"I show my face because I stand behind my work. But I ask nothing from you — your privacy is as sacred as your freedom."',fndB1:'Bank accounts in his own name — matches the IBAN ✔',fndB2:'BTC wallet is public — verifiable on-chain',fndB3:'Founder transparent, customers private — no data collection',stRev:'Under review 🔍',stConf:'Confirmed ✅',stCancel:'Cancelled ✕',txPh:'Transaction ID / txid (optional)',revNote:'Payment notice received — once verified, your order is confirmed and shipped. Like major platforms: no confirmation before payment verification.',q7:'When is my order confirmed?',a7:'First the payment notice (review), then we verify BTC on-chain / the transfer, then confirm and ship. Track every step by ID.',pioneerSub:'We started it first — pioneers of private BTC shopping.',ctaShop:'Start Shopping 🛒',ctaLink:'🔗 Order by Link',searchIn:'Search stores:',railBest:'🔥 Bestsellers',railDeals:'💸 Today\u2019s Deals',linkT:'🔗 Order by Link — Any Product, Any Site',linkSub:'Amazon, Alibaba, Trendyol... paste any product link, enter its price and your address — Minay handles the rest. Pay by BTC or transfer.',linkPh:'https://... product link',linkPriceL:'Item price (TRY)',linkQtyL:'Qty',linkCalc:'Calculate & Pay →',linkNeed:'Link, price and address required ⚠️',btcT:'₿ Why Bitcoin? Money Freedom',btcRateL:'Live rate',bw1t:'🚫 Uncensorable',bw1d:'No bank or state can block your payment.',bw2t:'🏦 Bankless Life',bw2d:'Millions of unbanked shop for the first time.',bw3t:'🕵️ Real Privacy',bw3d:'No name, no trail — address plus BTC.',bw4t:'🌍 Global Money',bw4d:'24/7, borderless, in minutes.',ftCats:'📂 Categories',ftHelp:'🆘 Help',lnkTrack:'Track Order',lnkLink:'Order by Link',q6:'How do I order by link?',a6:'Paste the link, price and address; pay. We buy it for you and ship to your address.'},
+fr:{tagline:'Liberté totale et confidentialité',motto:'L\u2019adresse de la liberté',searchPh:'🔍 Chercher...',searchBtn:'Go',cartBtn:'Panier',heroPill:'🛍️ SANS COMPTE • 80+ PRODUITS • BTC OU VIREMENT',heroTB:'Magasin Libre',heroSub:'Des vis aux perceuses — des dizaines de produits en photo plus un catalogue de millions via les marketplaces. Sans compte. Adresse + BTC ou virement.',pv1:'Sans inscription',pv2:'Adresse suffit',pv3:'BTC privé',pv5:'Virement : TRY + USD',pv4:'Open source',stP:'Produits',stS:'Catégories',stR:'Note',stC:'Commission',storesT:'🏬 Référence prix',visit:'Voir',activeOn:'produits',prodT:'🧰 Tous les produits',hubsT:'🌐 Des millions de plus',hubsSub:'Un produit spécial ? Allez à la page catégorie — des millions vous attendent.',cat_all:'Tout',cat_hand:'Outils à main',cat_power:'Électroportatif',cat_electro:'Électronique',cat_hardware:'Quincaillerie & pièces',cat_measure:'Mesure',cat_safety:'Sécurité',cat_office:'Bureau & école',s_rec:'Tri : Top',s_low:'Prix +',s_high:'Prix -',s_rate:'Note',s_disc:'Remise',cheapest:'MOINS CHER',diffW:'écart',revW:'avis',viewStore:'Réf',compare:'Détails 🔍',addBtn:'Panier 🛒',none:'Rien 🔍',minayPrice:'Prix Minay (commission incluse)',btcLine:'Équivalent BTC',howT:'🚀 Comment ça marche ?',h1:'Ajoutez — sans compte',h2:'Adresse seulement',h3:'BTC ou virement',h4:'Suivi par ID',trackT:'📦 Suivi (ID)',trackSub:'Saisissez votre ID.',trackPh:'MNY-XXXXXX',trackBtn:'Suivre',trackNone:'Introuvable ⚠️',stPrep:'En préparation 📦',stWait:'Virement attendu 🏦',items:'articles',total:'Total',addrL:'Adresse',whyT:'💎 Pourquoi Minay ?',f1t:'Zéro inscription',f1d:'Ni nom ni e-mail.',f2t:'Double paiement',f2d:'BTC (privé) ou virement (TRY/USD).',f5t:'Pas de banque ? BTC',f5d:'Aucun problème — Bitcoin pour tous, sans banque.',f4t:'Open Source',f4d:'Code MIT, import illimité.',revT:'⭐ Clients',r1:'"Acheté en 2 minutes."',r2:'"Perceuse + vis à ma porte."',r3:'"Virement et BTC : génial."',faqT:'❓ Questions',q1:'Vraiment sans données ?',a1:'En BTC : oui, adresse seulement. En virement : mettez l\u2019ID en référence.',q2:'Paiement ?',a2:'1) Bitcoin — privé. 2) Virement TRY/USD avec ID en référence.',q3:'Pas de banque ?',a3:'C\u2019est pour ça qu\u2019il y a BTC ! Sans banque ni données.',q4:'Code ouvert ?',a4:'Oui, MIT. Import JSON illimité.',q5:'Des millions ?',a5:'80+ produits en photo + hubs vers les catalogues géants.',walT:'💳 Comptes',walSub:'Virement (TRY/USD) ou Bitcoin.',copyBtn:'Copier 📋',copied:'Copié ✅',walNote:'N\u2019oubliez pas l\u2019ID en référence.',ftAbout:'Magasin libre sans inscription.',ftStores:'🛍️ Référence',ftLinks:'🔗 Accès',lnkProd:'Produits',lnkAdmin:'Admin',disc:'Minay indépendant. Taux indicatifs. Images : Wikimedia Commons. Code : MIT. © 2026 Minay.',cartEmpty:'Vide 🛒',cartEmpty2:'Ajoutez !',remove:'❌',coBtn:'Finir : adresse + paiement 🚀',coAddrT:'📍 Étape 1 — Adresse (seule info)',addrPh:'Rue, ville... (adresse uniquement)',back:'← Retour',next:'Suivant →',payChoose:'💳 Étape 2 — Paiement',mBtcT:'₿ Bitcoin',mBtcD:'Privé • adresse suffit',mBankT:'🏦 Virement',mBankD:'TRY/USD • ID en référence',payT:'₿ Paiement Bitcoin',payBankT:'🏦 Virement',bankTRY:'Compte TRY (₺)',bankUSD:'Compte USD ($)',accName:'Titulaire',ibanL:'IBAN',refL:'Référence (obligatoire)',sentBtn:'Envoyé ✅',bankNote:'Sans l\u2019ID en référence, on ne peut pas rapprocher.',sendExact:'Envoyez exactement :',paidBtn:'Payé ✅',okT:'🎉 Reçue !',okSub:'Gardez votre ID.',copyId:'Copier l\u2019ID',newOrder:'Nouvelle commande',needAddr:'Adresse d\u2019abord ⚠️',admT:'🔐 Admin',admEmail:'E-mail',admPass:'Mot de passe',admLogin:'Entrer',admErr:'Erreur ⚠️',admOut:'Sortie',tabO:'Commandes',tabL:'Prospects',tabC:'Commission',tabF:'Taux',tabA:'Bannière',tabP:'Produits',comL:'Commission (%)',save:'Sauver',saved:'Sauvé ✅',fxNote:'1 unité = X TRY',annL:'Bannière',ordNone:'Aucune.',leadsNone:'Aucun.',cId:'ID',cTime:'Heure',cBtc:'Montant',cM:'Moyen',cAddr:'Adresse',cProd:'Produit',cStore:'Magasin',pNameL:'Nom (TR)',pPriceL:'Prix (TRY)',pCatL:'Catégorie',pImgL:'Image',pQueryL:'Recherche',pAdd:'Ajouter',pImpL:'Importer JSON',pExp:'Exporter',addedP:'Ajouté ✅',added:'Ajouté ✅',curL:'Devise',clearAll:'Tout effacer',pioneer:'🥇 Premier magasin d\u2019achat privé en Bitcoin',fndT:'👔 Notre fondateur',fndRole:'Fondateur de Minay',fndMsg:'"Je montre mon visage car je garantis mon travail. Mais je ne vous demande rien — votre confidentialité est sacrée."',fndB1:'Comptes à son nom — conforme à l\u2019IBAN ✔',fndB2:'Portefeuille BTC public — vérifiable',fndB3:'Fondateur transparent, clients privés — aucune donnée',stRev:'En vérification 🔍',stConf:'Confirmée ✅',stCancel:'Annulée ✕',txPh:'ID de transaction (optionnel)',revNote:'Notification reçue — après vérification, commande confirmée et expédiée. Comme les grandes plateformes : pas de confirmation sans paiement vérifié.',q7:'Quand ma commande est-elle confirmée ?',a7:'D\u2019abord la notification (vérification), puis confirmation et envoi. Suivi par ID.',pioneerSub:'Nous sommes les premiers — pionniers de l\u2019achat BTC privé.',ctaShop:'Acheter 🛒',ctaLink:'🔗 Commander par lien',searchIn:'Chercher :',railBest:'🔥 Top ventes',railDeals:'💸 Offres du jour',linkT:'🔗 Commander par lien — tout produit, tout site',linkSub:'Amazon, Alibaba... collez le lien, indiquez le prix et l\u2019adresse — Minay s\u2019occupe du reste. Payez en BTC ou par virement.',linkPh:'Lien produit https://...',linkPriceL:'Prix (TRY)',linkQtyL:'Qté',linkCalc:'Calculer et payer →',linkNeed:'Lien, prix et adresse requis ⚠️',btcT:'₿ Pourquoi Bitcoin ?',btcRateL:'Taux',bw1t:'🚫 Incensurable',bw1d:'Aucune banque ne peut bloquer.',bw2t:'🏦 Sans banque',bw2d:'Des millions sans banque achètent enfin.',bw3t:'🕵️ Vraie confidentialité',bw3d:'Ni nom ni trace — adresse plus BTC.',bw4t:'🌍 Monnaie mondiale',bw4d:'24/7, sans frontières.',ftCats:'📂 Catégories',ftHelp:'🆘 Aide',lnkTrack:'Suivi',lnkLink:'Par lien',q6:'Commander par lien ?',a6:'Collez le lien, le prix et l\u2019adresse ; payez. On achète et on livre.'},
+de:{tagline:'Totale Freiheit & Privatsphäre',motto:'Die Adresse der Freiheit',searchPh:'🔍 Suchen...',searchBtn:'Los',cartBtn:'Korb',heroPill:'🛍️ KEIN KONTO • 80+ PRODUKTE • BTC ODER TRANSFER',heroTB:'Freier Shop',heroSub:'Von Schrauben bis Bohrern — Dutzende Produkte mit Foto plus Millionenkatalog über Marktplätze. Kein Konto. Adresse + BTC oder Überweisung.',pv1:'Keine Registrierung',pv2:'Adresse genügt',pv3:'Privates BTC',pv5:'Transfer: TRY + USD',pv4:'Open Source',stP:'Produkte',stS:'Kategorien',stR:'Note',stC:'Provision',storesT:'🏬 Preisreferenz',visit:'Ansehen',activeOn:'Produkte',prodT:'🧰 Alle Produkte',hubsT:'🌐 Millionen mehr',hubsSub:'Spezialprodukt? Zur Kategorie-Seite — Millionen warten.',cat_all:'Alle',cat_hand:'Handwerkzeug',cat_power:'Elektrowerkzeug',cat_electro:'Elektronik',cat_hardware:'Baumarkt & Teile',cat_measure:'Messen',cat_safety:'Schutz',cat_office:'Büro & Schule',s_rec:'Top',s_low:'Preis +',s_high:'Preis -',s_rate:'Note',s_disc:'Rabatt',cheapest:'GÜNSTIGSTES',diffW:'Diff.',revW:'Bewertungen',viewStore:'Ref',compare:'Details 🔍',addBtn:'Korb 🛒',none:'Nichts 🔍',minayPrice:'Minay-Preis (inkl.)',btcLine:'BTC-Wert',howT:'🚀 So geht\u2019s',h1:'In den Korb — ohne Konto',h2:'Nur Adresse',h3:'BTC oder Transfer',h4:'Per ID verfolgen',trackT:'📦 Tracking (nur ID)',trackSub:'ID eingeben.',trackPh:'MNY-XXXXXX',trackBtn:'Suchen',trackNone:'Nicht gefunden ⚠️',stPrep:'In Arbeit 📦',stWait:'Wartet auf Transfer 🏦',items:'Artikel',total:'Gesamt',addrL:'Adresse',whyT:'💎 Warum Minay?',f1t:'Null Registrierung',f1d:'Kein Name, keine E-Mail.',f2t:'Doppelt zahlen',f2d:'BTC (privat) oder Transfer (TRY/USD).',f5t:'Kein Konto? BTC',f5d:'Kein Problem — Bitcoin für alle, ohne Bank.',f4t:'Open Source',f4d:'MIT-Code, Import ohne Limit.',revT:'⭐ Kunden',r1:'"In 2 Minuten gekauft."',r2:'"Bohrer + Schrauben an der Tür."',r3:'"Transfer und BTC : genial."',faqT:'❓ Fragen',q1:'Wirklich keine Daten?',a1:'Per BTC: ja, nur Adresse. Per Transfer: ID als Betreff.',q2:'Zahlung?',a2:'1) Bitcoin — privat. 2) Transfer TRY/USD mit ID.',q3:'Kein Konto?',a3:'Dafür gibt es BTC! Ohne Bank, ohne Daten.',q4:'Code offen?',a4:'Ja, MIT. JSON-Import ohne Limit.',q5:'Millionen?',a5:'80+ Fotos + Hubs zu Riesenkatalogen.',walT:'💳 Konten',walSub:'Transfer (TRY/USD) oder Bitcoin.',copyBtn:'Kopieren 📋',copied:'Kopiert ✅',walNote:'ID als Betreff nicht vergessen.',ftAbout:'Freier Shop ohne Registrierung.',ftStores:'🛍️ Referenz',ftLinks:'🔗 Zugriff',lnkProd:'Produkte',lnkAdmin:'Admin',disc:'Minay unabhängig. Kurse Richtwerte. Bilder: Wikimedia Commons. Code: MIT. © 2026 Minay.',cartEmpty:'Leer 🛒',cartEmpty2:'Hinzufügen!',remove:'❌',coBtn:'Fertig: Adresse + Zahlung 🚀',coAddrT:'📍 Schritt 1 — Adresse (einzige Info)',addrPh:'Straße, Stadt... (nur Adresse)',back:'← Zurück',next:'Weiter →',payChoose:'💳 Schritt 2 — Zahlung',mBtcT:'₿ Bitcoin',mBtcD:'Privat • nur Adresse',mBankT:'🏦 Transfer',mBankD:'TRY/USD • ID als Betreff',payT:'₿ Bitcoin-Zahlung',payBankT:'🏦 Transfer',bankTRY:'TRY-Konto (₺)',bankUSD:'USD-Konto ($)',accName:'Inhaber',ibanL:'IBAN',refL:'Betreff (Pflicht)',sentBtn:'Gesendet ✅',bankNote:'Ohne ID im Betreff keine Zuordnung.',sendExact:'Genau senden:',paidBtn:'Bezahlt ✅',okT:'🎉 Erhalten!',okSub:'ID behalten.',copyId:'ID kopieren',newOrder:'Neu',needAddr:'Erst Adresse ⚠️',admT:'🔐 Admin',admEmail:'E-Mail',admPass:'Passwort',admLogin:'Login',admErr:'Falsch ⚠️',admOut:'Logout',tabO:'Bestellungen',tabL:'Leads',tabC:'Provision',tabF:'Kurse',tabA:'Banner',tabP:'Produkte',comL:'Provision (%)',save:'Speichern',saved:'OK ✅',fxNote:'1 = X TRY',annL:'Banner',ordNone:'Keine.',leadsNone:'Keine.',cId:'ID',cTime:'Zeit',cBtc:'Betrag',cM:'Methode',cAddr:'Adresse',cProd:'Produkt',cStore:'Shop',pNameL:'Name (TR)',pPriceL:'Preis (TRY)',pCatL:'Kategorie',pImgL:'Bild',pQueryL:'Suche',pAdd:'Hinzufügen',pImpL:'JSON importieren',pExp:'Export',addedP:'OK ✅',added:'OK ✅',curL:'Währung',clearAll:'Alles löschen',pioneer:'🥇 Erster Shop für privates Bitcoin-Shopping',fndT:'👔 Unser Gründer',fndRole:'Gründer von Minay',fndMsg:'"Ich zeige mein Gesicht, weil ich für meine Arbeit bürge. Von Ihnen verlange ich nichts — Ihre Privatsphäre ist heilig."',fndB1:'Konten auf seinen Namen — passt zum IBAN ✔',fndB2:'BTC-Wallet öffentlich — prüfbar',fndB3:'Gründer transparent, Kunden privat — keine Daten',stRev:'Wird geprüft 🔍',stConf:'Bestätigt ✅',stCancel:'Storniert ✕',txPh:'Transaktions-ID (optional)',revNote:'Zahlung gemeldet — nach Prüfung bestätigt und versendet. Wie bei Großen: keine Bestätigung ohne Zahlung.',q7:'Wann wird bestätigt?',a7:'Erst Meldung (Prüfung), dann Verifizierung, dann Versand. Tracking per ID.',pioneerSub:'Wir waren die Ersten — Pioniere des privaten BTC-Shoppings.',ctaShop:'Shoppen 🛒',ctaLink:'🔗 Per Link bestellen',searchIn:'Suchen:',railBest:'🔥 Bestseller',railDeals:'💸 Tagesdeals',linkT:'🔗 Per Link bestellen — jedes Produkt',linkSub:'Egal welcher Shop: Link einfügen, Preis + Adresse — Minay erledigt den Rest. Per BTC oder Transfer zahlen.',linkPh:'Produktlink https://...',linkPriceL:'Preis (TRY)',linkQtyL:'Menge',linkCalc:'Berechnen & zahlen →',linkNeed:'Link, Preis und Adresse nötig ⚠️',btcT:'₿ Warum Bitcoin?',btcRateL:'Kurs',bw1t:'🚫 Unzensierbar',bw1d:'Keine Bank kann blockieren.',bw2t:'🏦 Ohne Bank',bw2d:'Millionen ohne Konto kaufen ein.',bw3t:'🕵️ Echte Privatsphäre',bw3d:'Kein Name, keine Spur — Adresse plus BTC.',bw4t:'🌍 Globales Geld',bw4d:'24/7, grenzenlos.',ftCats:'📂 Kategorien',ftHelp:'🆘 Hilfe',lnkTrack:'Tracking',lnkLink:'Per Link',q6:'Per Link bestellen?',a6:'Link, Preis und Adresse einfügen; zahlen. Wir kaufen und liefern.'},
+es:{tagline:'Libertad total y privacidad',motto:'La dirección de la libertad',searchPh:'🔍 Buscar...',searchBtn:'Ir',cartBtn:'Carrito',heroPill:'🛍️ SIN CUENTA • 80+ PRODUCTOS • BTC O TRANSFER',heroTB:'Tienda Libre',heroSub:'De tornillos a taladros — decenas con foto más catálogo de millones vía marketplaces. Sin cuenta. Dirección + BTC o transferencia.',pv1:'Sin registro',pv2:'Basta la dirección',pv3:'BTC privado',pv5:'Transfer: TRY + USD',pv4:'Abierto',stP:'Productos',stS:'Categorías',stR:'Nota',stC:'Comisión',storesT:'🏬 Referencia',visit:'Ver',activeOn:'productos',prodT:'🧰 Todo',hubsT:'🌐 Millones más',hubsSub:'¿Algo especial? Ve a la página de categoría — millones te esperan.',cat_all:'Todo',cat_hand:'Herramientas',cat_power:'Eléctricas',cat_electro:'Electrónica',cat_hardware:'Ferretería',cat_measure:'Medición',cat_safety:'Seguridad',cat_office:'Oficina y escuela',s_rec:'Top',s_low:'Precio +',s_high:'Precio -',s_rate:'Nota',s_disc:'Dto.',cheapest:'MÁS BARATO',diffW:'dif.',revW:'reseñas',viewStore:'Ref',compare:'Detalles 🔍',addBtn:'Carrito 🛒',none:'Nada 🔍',minayPrice:'Precio Minay (incl.)',btcLine:'Equiv. BTC',howT:'🚀 ¿Cómo funciona?',h1:'Añade — sin cuenta',h2:'Solo dirección',h3:'BTC o transferencia',h4:'Sigue por ID',trackT:'📦 Seguimiento (solo ID)',trackSub:'Escribe tu ID.',trackPh:'MNY-XXXXXX',trackBtn:'Rastrear',trackNone:'No hallado ⚠️',stPrep:'Preparando 📦',stWait:'Esperando 🏦',items:'artículos',total:'Total',addrL:'Dirección',whyT:'💎 ¿Por qué Minay?',f1t:'Cero registro',f1d:'Ni nombre ni correo.',f2t:'Doble pago',f2d:'BTC (privado) o transferencia (TRY/USD).',f5t:'¿Sin banco? BTC',f5d:'Sin problema — Bitcoin para todos, sin banco.',f4t:'Abierto',f4d:'Código MIT, importación sin límite.',revT:'⭐ Clientes',r1:'"Compré en 2 minutos."',r2:'"Taladro + tornillos en puerta."',r3:'"Transfer y BTC : genial."',faqT:'❓ Preguntas',q1:'¿Sin datos?',a1:'En BTC: sí, solo dirección. En transferencia: ID en concepto.',q2:'¿Pago?',a2:'1) Bitcoin — privado. 2) Transferencia TRY/USD con ID.',q3:'¿Sin banco?',a3:'¡Para eso está BTC! Sin banco ni datos.',q4:'¿Abierto?',a4:'Sí, MIT. Importación JSON sin límite.',q5:'¿Millones?',a5:'80+ con foto + hubs a catálogos gigantes.',walT:'💳 Cuentas',walSub:'Transferencia (TRY/USD) o Bitcoin.',copyBtn:'Copiar 📋',copied:'OK ✅',walNote:'No olvides el ID en el concepto.',ftAbout:'Tienda libre sin registro.',ftStores:'🛍️ Referencia',ftLinks:'🔗 Acceso',lnkProd:'Productos',lnkAdmin:'Admin',disc:'Minay independiente. Tasas indicativas. Imágenes: Wikimedia Commons. Código: MIT. © 2026 Minay.',cartEmpty:'Vacío 🛒',cartEmpty2:'¡Añade!',remove:'❌',coBtn:'Terminar: dirección + pago 🚀',coAddrT:'📍 Paso 1 — Dirección (único dato)',addrPh:'Calle, ciudad... (solo dirección)',back:'← Atrás',next:'Siguiente →',payChoose:'💳 Paso 2 — Pago',mBtcT:'₿ Bitcoin',mBtcD:'Privado • solo dirección',mBankT:'🏦 Transferencia',mBankD:'TRY/USD • ID en concepto',payT:'₿ Pago Bitcoin',payBankT:'🏦 Transferencia',bankTRY:'Cuenta TRY (₺)',bankUSD:'Cuenta USD ($)',accName:'Titular',ibanL:'IBAN',refL:'Concepto (obligatorio)',sentBtn:'Enviado ✅',bankNote:'Sin el ID no podemos conciliar.',sendExact:'Envía exacto:',paidBtn:'Pagué ✅',okT:'🎉 ¡Recibido!',okSub:'Guarda tu ID.',copyId:'Copiar ID',newOrder:'Nuevo',needAddr:'Dirección primero ⚠️',admT:'🔐 Admin',admEmail:'Correo',admPass:'Contraseña',admLogin:'Entrar',admErr:'Error ⚠️',admOut:'Salir',tabO:'Pedidos',tabL:'Leads',tabC:'Comisión',tabF:'Tasas',tabA:'Banner',tabP:'Productos',comL:'Comisión (%)',save:'Guardar',saved:'OK ✅',fxNote:'1 = X TRY',annL:'Banner',ordNone:'Ninguno.',leadsNone:'Ninguno.',cId:'ID',cTime:'Hora',cBtc:'Monto',cM:'Método',cAddr:'Dirección',cProd:'Producto',cStore:'Tienda',pNameL:'Nombre (TR)',pPriceL:'Precio (TRY)',pCatL:'Categoría',pImgL:'Imagen',pQueryL:'Búsqueda',pAdd:'Añadir',pImpL:'Importar JSON',pExp:'Exportar',addedP:'OK ✅',added:'OK ✅',curL:'Moneda',clearAll:'Borrar todo',pioneer:'🥇 Primera tienda en compra privada con Bitcoin',fndT:'👔 Nuestro fundador',fndRole:'Fundador de Minay',fndMsg:'"Muestro mi rostro porque respondo por mi trabajo. Pero no te pido nada — tu privacidad es sagrada."',fndB1:'Cuentas a su nombre — coincide con el IBAN ✔',fndB2:'Billetera BTC pública — verificable',fndB3:'Fundador transparente, clientes privados — sin datos',stRev:'En revisión 🔍',stConf:'Confirmado ✅',stCancel:'Cancelado ✕',txPh:'ID de transacción (opcional)',revNote:'Aviso recibido — tras verificar, confirmamos y enviamos. Como las grandes: sin confirmación sin pago verificado.',q7:'¿Cuándo se confirma?',a7:'Primero el aviso (revisión), luego verificamos y enviamos. Sigue por ID.',pioneerSub:'Fuimos los primeros — pioneros en compra privada con BTC.',ctaShop:'Comprar 🛒',ctaLink:'🔗 Pedir por enlace',searchIn:'Buscar:',railBest:'🔥 Más vendidos',railDeals:'💸 Ofertas',linkT:'🔗 Pedir por enlace — cualquier producto',linkSub:'Amazon, Alibaba... pega el enlace, el precio y tu dirección — Minay se encarga. Paga en BTC o transferencia.',linkPh:'Enlace https://...',linkPriceL:'Precio (TRY)',linkQtyL:'Cant.',linkCalc:'Calcular y pagar →',linkNeed:'Enlace, precio y dirección ⚠️',btcT:'₿ ¿Por qué Bitcoin?',btcRateL:'Tasa',bw1t:'🚫 Incensurable',bw1d:'Ningún banco puede bloquear.',bw2t:'🏦 Sin banco',bw2d:'Millones sin banco compran por fin.',bw3t:'🕵️ Privacidad real',bw3d:'Ni nombre ni rastro — dirección más BTC.',bw4t:'🌍 Dinero global',bw4d:'24/7, sin fronteras.',ftCats:'📂 Categorías',ftHelp:'🆘 Ayuda',lnkTrack:'Rastrear',lnkLink:'Por enlace',q6:'¿Pedir por enlace?',a6:'Pega el enlace, precio y dirección; paga. Compramos y enviamos.'}};
+const CURS={TRY:'₺',USD:'$',EUR:'€',GBP:'£',SAR:'ر.س',AED:'د.إ',BTC:'₿'};
+let lang=sGetS('minay_lang','tr');
+let cur=sGetS('minay_cur','TRY');
+let R=Object.assign({TRY:1,USD:42,EUR:45.5,GBP:53,SAR:11.2,AED:11.4,BTC:4600000},sGet('minay_fx',{}));
+let COM=Object.assign({rate:3,normal:8},sGet('minay_com',{}));
+let ANN=sGetS('minay_ann','');
+let activeCat='all';
+let cart=sGet('minay_cart',{});
+let adminOn=false, admTab='O';
+const t=k=>(T[lang]&&T[lang][k])||T.tr[k]||k;
+const storeOf=n=>STORES.find(s=>s.name===n);
+const best=p=>Math.min(...p.offers.map(o=>o[1]));
+const maxP=p=>Math.max(...p.offers.map(o=>o[1]));
+const pname=p=>(p.n[lang]||p.n.en);
+function fmt(tryAmt){const r=R[cur]||1;const v=tryAmt/r;if(cur==='BTC')return v.toFixed(6)+' ₿';const s=v>=100?Math.round(v).toLocaleString('en-US'):v.toFixed(2);return s+' '+CURS[cur];}
+function btc8(tryAmt){return (tryAmt/(R.BTC||4600000)).toFixed(8);}
+function save(){sSet('minay_cart',cart);let n=0;for(const k in cart)n+=cart[k];document.getElementById('cartCount').textContent=n;}
+function scrollToGrid(){document.getElementById('grid').scrollIntoView({behavior:'smooth'});}
+function stars(r){return '★'.repeat(Math.round(r))+'☆'.repeat(5-Math.round(r));}
+function setLang(v){lang=v;sStr('minay_lang',v);applyI18n();}
+function setCur(v){cur=v;sStr('minay_cur',v);render();renderCart();}
+function pImg(p){return p.img||(p.id===32?'img/p32.png':'img/p'+p.id+'.jpg');}
+function applyI18n(){
+document.documentElement.lang=lang;document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
+document.getElementById('langSel').value=lang;document.getElementById('curSel').value=cur;
+document.querySelectorAll('[data-i]').forEach(e=>{e.textContent=t(e.dataset.i);});
+document.querySelectorAll('[data-i-ph]').forEach(e=>{e.placeholder=t(e.dataset.iPh);});
+document.getElementById('topbar').textContent=ANN||('🛡️ '+t('motto')+' | '+t('heroPill'));
+document.getElementById('statCom').textContent='%'+COM.rate;
+document.getElementById('statN').textContent=PRODUCTS.length+'+';
+document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=170x170&data='+encodeURIComponent('bitcoin:'+BTC);
+renderStores();renderCats();renderSort();render();renderCart();renderFaq();renderHubs();renderDept();renderRails();setBtcRate();
+}
+function renderStores(){document.getElementById('storeRow').innerHTML=STORES.map(s=>{const n=PRODUCTS.filter(p=>p.offers.some(o=>o[0]===s.name)).length;return `<div class="store-card" style="border-top-color:${s.color}"><div class="slogo" style="color:${s.color}">${s.name}</div><small>${n} ${t('activeOn')}</small><a href="${s.home}" target="_blank" rel="nofollow noopener" style="background:${s.color}">${t('visit')}</a></div>`;}).join('');}
+function renderCats(){const cats=['all','hand','power','electro','hardware','measure','safety','office'];document.getElementById('cats').innerHTML=cats.map(c=>`<button class="${c===activeCat?'active':''}" onclick="setCat('${c}')">${t('cat_'+c)}</button>`).join('');}
+function setCat(c){activeCat=c;renderCats();render();}
+function renderSort(){const c2=document.getElementById('sort').value||'rec';document.getElementById('sort').innerHTML=['rec','low','high','rate','disc'].map(v=>`<option value="${v}"${v===c2?' selected':''}>${t('s_'+v)}</option>`).join('');}
+function renderHubs(){const cats=['hand','power','electro','hardware','measure','safety','office'];document.getElementById('hubGrid').innerHTML=cats.map(c=>{const n=PRODUCTS.filter(p=>p.cat===c).length;const q=HUBQ[c];return `<div class="hub">🧰 ${t('cat_'+c)}<small>${n} + ∞</small><div class="hl"><a style="background:#FF9900" target="_blank" rel="nofollow noopener" href="https://www.amazon.com.tr/s?k=${encodeURIComponent(q)}">Amazon</a><a style="background:#F27A1A" target="_blank" rel="nofollow noopener" href="https://www.trendyol.com/sr?q=${encodeURIComponent(q)}">Trendyol</a><a style="background:#FF6000" target="_blank" rel="nofollow noopener" href="https://www.hepsiburada.com/ara?q=${encodeURIComponent(q)}">Hepsi</a></div></div>`;}).join('');}
+function filtered(){
+const q=document.getElementById('search').value.trim().toLowerCase();
+let list=PRODUCTS.filter(p=>(activeCat==='all'||p.cat===activeCat)&&(!q||pname(p).toLowerCase().includes(q)||p.n.en.toLowerCase().includes(q)));
+const s=document.getElementById('sort').value;
+if(s==='low')list=[...list].sort((a,b)=>best(a)-best(b));
+if(s==='high')list=[...list].sort((a,b)=>best(b)-best(a));
+if(s==='rate')list=[...list].sort((a,b)=>b.rating-a.rating);
+if(s==='disc')list=[...list].sort((a,b)=>((maxP(b)-best(b))/maxP(b))-((maxP(a)-best(a))/maxP(a)));
+return list;
+}
+function offerRow(p,o){const st=storeOf(o[0]);const cheap=o[1]===best(p);
+return `<div class="offer${cheap?' cheapest':''}"><span class="sname" style="background:${st.color}">${o[0]}</span><span class="pr">${fmt(o[1])}</span><a href="${st.q(p.query)}" target="_blank" rel="nofollow sponsored noopener" onclick="lead(${p.id},'${o[0]}')">${t('viewStore')}</a></div>`;}
+function render(){
+const list=filtered().slice(0,120);
+document.getElementById('grid').innerHTML=list.map(p=>{
+const b=best(p),m=maxP(p),pct=Math.round((1-b/m)*100);
+const mp=b*(1+COM.rate/100);
+return `<div class="card"><span class="best">${t('cheapest')}: ${fmt(b)}</span>
+<div class="pimg"><span>${p.emoji}</span><img src="${pImg(p)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+<div class="pbody"><div class="pcat">${t('cat_'+p.cat).toUpperCase()} • %${pct} ${t('diffW')}</div>
+<div class="pname">${pname(p)}</div>
+<div class="rating">${stars(p.rating)} ${p.rating} <small>(${p.reviews} ${t('revW')})</small></div>
+<div class="minay-line"><span>${t('minayPrice')}<small>${t('btcLine')}: ${btc8(mp)} BTC</small></span><b>${fmt(mp)}</b></div>
+<div class="offers">${p.offers.map(o=>offerRow(p,o)).join('')}</div>
+<div class="row"><button class="more" onclick="openModal(${p.id})">${t('compare')}</button><button class="add" onclick="addCart(${p.id})">${t('addBtn')}</button></div></div></div>`;
+}).join('')||`<p style="grid-column:1/-1;text-align:center;padding:40px">${t('none')}</p>`;
+renderChips();
+}
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function renderDept(){const cats=['all','hand','power','electro','hardware','measure','safety','office'];
+document.getElementById('deptnav').innerHTML=cats.map(c=>`<button class="${c===activeCat?'on':''}" onclick="setCatNav('${c}')">${t('cat_'+c)}</button>`).join('')+`<button onclick="document.getElementById('linkSec').scrollIntoView({behavior:'smooth'})">🔗 ${t('lnkLink')}</button><button onclick="document.getElementById('btcSec').scrollIntoView({behavior:'smooth'})">₿ Bitcoin</button>`;}
+function setCatNav(c){setCat(c);scrollToGrid();}
+function footCat(c){setCat(c);scrollToGrid();}
+function renderChips(){const box=document.getElementById('storeChips');if(!box)return;const q=document.getElementById('search').value.trim();if(!q){box.innerHTML='';return;}
+box.innerHTML=`<div class="chiprow"><b>“${esc(q)}” ${t('searchIn')}</b>${STORES.map(s=>`<a style="background:${s.color}" target="_blank" rel="nofollow noopener" href="${s.q(q)}">${s.name}</a>`).join('')}</div>`;}
+function railCard(p){const mp=best(p)*(1+COM.rate/100);
+return `<div class="rcard"><img src="${pImg(p)}" alt="" loading="lazy" onerror="this.style.display='none'"><div class="rb"><span class="rn">${esc(pname(p))}</span><span class="rp">${fmt(mp)}</span><button onclick="addCart(${p.id})">${t('addBtn')}</button></div></div>`;}
+function renderRails(){
+const byR=[...PRODUCTS].sort((a,b)=>b.reviews-a.reviews).slice(0,8);
+const byD=[...PRODUCTS].sort((a,b)=>((maxP(b)-best(b))/maxP(b))-((maxP(a)-best(a))/maxP(a))).slice(0,8);
+document.getElementById('railBest').innerHTML=byR.map(railCard).join('');
+document.getElementById('railDeals').innerHTML=byD.map(railCard).join('');
+}
+function setBtcRate(){const s='1 BTC = '+Math.round(R.BTC||4600000).toLocaleString('en-US')+' ₺';const a=document.getElementById('btcRate');if(a)a.textContent=s;const b=document.getElementById('btcRateF');if(b)b.textContent=s;}
+function cartTry(){let s=0;for(const k in cart){const p=PRODUCTS.find(x=>x.id==k);if(p)s+=best(p)*(1+COM.rate/100)*cart[k];}return s;}
+function addCart(id){cart[id]=(cart[id]||0)+1;save();renderCart();toast(t('added'));}
+function chQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];save();renderCart();}
+function rmItem(id){delete cart[id];save();renderCart();}
+function toggleDrawer(open){document.getElementById('drawer').classList.toggle('open',open);document.getElementById('overlay').classList.toggle('show',open);if(open)renderCart();}
+function renderCart(){
+const box=document.getElementById('drawerItems');const keys=Object.keys(cart);
+const foot=document.getElementById('cartFoot');
+if(!keys.length){box.innerHTML=`<p style="text-align:center;color:#999;padding:30px">${t('cartEmpty')}<br>${t('cartEmpty2')}</p>`;foot.style.display='none';return;}
+foot.style.display='block';
+box.innerHTML=keys.map(k=>{const p=PRODUCTS.find(x=>x.id==k);if(!p)return '';const up=best(p)*(1+COM.rate/100);
+return `<div class="citem"><img src="${pImg(p)}" alt="" loading="lazy" onerror="this.style.display='none'"><span class="n">${pname(p)}<br><small>${fmt(up)} • ${btc8(up)} BTC</small></span><span class="qty"><button onclick="chQty(${k},1)">+</button><b>${cart[k]}</b><button onclick="chQty(${k},-1)">-</button></span><button onclick="rmItem(${k})" style="background:none;border:none;cursor:pointer">${t('remove')}</button></div>`;}).join('');
+const tot=cartTry();
+document.getElementById('total').textContent=t('total')+': '+fmt(tot);
+document.getElementById('totalBtc').textContent='₿ '+btc8(tot)+' BTC';
+document.getElementById('checkoutBtn').textContent=t('coBtn');
+}
+function lead(pid,store){try{const L=sGet('minay_leads',[]);L.unshift({p:pid,s:store,time:new Date().toLocaleString()});sSet('minay_leads',L.slice(0,200));}catch(e){}}
+function openModal(id){
+const p=PRODUCTS.find(x=>x.id===id);const mp=best(p)*(1+COM.rate/100);
+document.getElementById('modalBody').innerHTML=`<img class="mimg" src="${pImg(p)}" alt="" onerror="this.style.display='none'"><h3>${pname(p)}</h3><div class="rating">${stars(p.rating)} ${p.rating} <small>(${p.reviews} ${t('revW')})</small></div><div class="minay-line" style="margin:8px 0"><span>${t('minayPrice')}<small>${t('btcLine')}: ${btc8(mp)} BTC</small></span><b>${fmt(mp)}</b></div><div class="offers">${p.offers.map(o=>offerRow(p,o)).join('')}</div><div class="row" style="display:flex;gap:8px;margin-top:10px"><button class="more" style="flex:1" onclick="closeModal()">${t('back')}</button><button class="add" style="flex:1" onclick="closeModal();addCart(${p.id})">${t('addBtn')}</button></div>`;
+document.getElementById('modal').classList.add('show');document.getElementById('overlay').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show');if(!adminOn)document.getElementById('overlay').classList.remove('show');}
+let coStep=1, coMethod=null, coCcy='TRY', coId=null;
+function startCheckout(){if(!Object.keys(cart).length){toast(t('cartEmpty'));return;}toggleDrawer(false);coStep=1;coMethod=null;coId=null;renderCheckout();document.getElementById('modal').classList.add('show');document.getElementById('overlay').classList.add('show');}
+function mkId(){return 'MNY-'+Math.random().toString(36).slice(2,8).toUpperCase();}
+function renderCheckout(){
+const tot=cartTry(),btc=btc8(tot);
+let h=`<div class="steps"><div class="${coStep===1?'on':''}">1 · ${t('addrL')}</div><div class="${coStep>=2?'on':''}">2 · 💳</div><div class="${coStep===3?'on':''}">3 · ✓</div></div>`;
+if(coStep===1){
+h+=`<h3>${t('coAddrT')}</h3><textarea id="coAddr" placeholder="${t('addrPh')}"></textarea><div style="font-size:13px;color:var(--green);font-weight:800">${t('total')}: ${fmt(tot)} · ₿ ${btc} BTC</div><button class="bigbtn" onclick="coNext()">${t('next')}</button>`;
+}else if(coStep===2&&!coMethod){
+h+=`<h3>${t('payChoose')}</h3><div class="paycards"><div class="paycard" onclick="coMethod='btc';renderCheckout()"><b>${t('mBtcT')}</b><small>${t('mBtcD')}</small></div><div class="paycard" onclick="coMethod='bank';coCcy='TRY';renderCheckout()"><b>${t('mBankT')}</b><small>${t('mBankD')}</small></div></div><button class="more" style="width:100%" onclick="coStep=1;coMethod=null;renderCheckout()">${t('back')}</button>`;
+}else if(coStep===2&&coMethod==='btc'){
+const uri='bitcoin:'+BTC+'?amount='+btc;
+h+=`<h3>${t('payT')}</h3><div class="paybox"><div>${t('sendExact')}</div><div class="amt">${btc} BTC</div><div class="amt2">${fmt(tot)}</div><div class="adr">${BTC}</div><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${encodeURIComponent(uri)}" width="150" height="150" style="border-radius:10px;background:#fff;padding:6px" alt="QR"></div><button class="ghostbtn" onclick="copyTxt('${BTC}',null,'${t('copied')}')">${t('copyBtn')}</button><input id="coTx" placeholder="${t('txPh')}" style="width:100%;padding:11px;margin-top:8px;border:2px solid #e0e0e0;border-radius:12px;font-size:13px;direction:ltr"><button class="bigbtn" onclick="coPaid('btc')">${t('paidBtn')}</button><button class="more" style="width:100%;margin-top:8px" onclick="coMethod=null;renderCheckout()">${t('back')}</button>`;
+}else if(coStep===2&&coMethod==='bank'){
+if(!coId){coId=mkId();saveOrder(coId,'bank',coCcy,'wait');}
+const iban=coCcy==='USD'?BANK.USD:BANK.TRY;
+const amt=coCcy==='USD'?(tot/(R.USD||42)).toFixed(2)+' $':Math.round(tot).toLocaleString('en-US')+' ₺';
+h+=`<h3>${t('payBankT')}</h3><div class="ccyrow"><button class="${coCcy==='TRY'?'on':''}" onclick="coCcy='TRY';coId=null;renderCheckout()">${t('bankTRY')}</button><button class="${coCcy==='USD'?'on':''}" onclick="coCcy='USD';coId=null;renderCheckout()">${t('bankUSD')}</button></div><div class="ibanbox"><div class="nm">${t('accName')}: ${BANK.name}</div><div class="ib">${iban}</div><button onclick="copyTxt('${iban.replace(/ /g,'')}',null,'${t('copied')}')">${t('copyBtn')}</button><div style="margin-top:8px;font-size:20px;font-weight:900">${t('total')}: ${amt}</div><div style="font-size:13px">${t('refL')}: <b style="font-size:17px;letter-spacing:1px">${coId}</b> <button onclick="copyTxt('${coId}',null,'${t('copied')}')" style="padding:4px 12px;font-size:12px">${t('copyBtn')}</button></div></div><p style="font-size:12.5px;color:#5d4037;background:#fff3e0;border-radius:10px;padding:8px">${t('bankNote')}</p><button class="bigbtn" onclick="bankSent()">${t('sentBtn')}</button><button class="more" style="width:100%;margin-top:8px" onclick="coMethod=null;renderCheckout()">${t('back')}</button>`;
+}else if(coStep===3){
+h+=`<h3>${t('okT')}</h3><p style="font-size:14px;color:#555">${t('okSub')}${coMethod==='bank'?' '+t('bankNote'):''}</p><p style="font-size:13px;color:#1b5e20;background:#f1f8e9;border-radius:10px;padding:8px;margin-top:8px">${t('revNote')}</p><div class="oid">${coId}</div><div style="display:flex;gap:8px"><button class="more" style="flex:1" onclick="copyTxt('${coId}',null,'${t('copied')}')">${t('copyId')}</button><button class="add" style="flex:1" onclick="closeModal()">${t('newOrder')}</button></div>`;
+}
+document.getElementById('modalBody').innerHTML=h;
+}
+function coNext(){const a=(document.getElementById('coAddr').value||'').trim();if(a.length<10){toast(t('needAddr'));return;}try{sessionStorage.setItem('minay_addr',a);}catch(e){window._addr=a;}coStep=2;renderCheckout();}
+function myAddr(){try{return sessionStorage.getItem('minay_addr')||window._addr||'';}catch(e){return window._addr||'';}}
+function saveOrder(id,method,ccy,st,tx){
+const tot=cartTry();
+const items=Object.keys(cart).map(k=>({id:+k,q:cart[k]}));
+try{const O=sGet('minay_orders',[]);O.unshift({id,items,try:Math.round(tot),btc:btc8(tot),method,ccy,addr:myAddr(),tx:tx||'',time:new Date().toLocaleString(),st});sSet('minay_orders',O);}catch(e){}
+return {tot,items};
+}
+function updateOrderSt(id,st){try{const O=sGet('minay_orders',[]);const o=O.find(x=>x.id===id);if(o){o.st=st;sSet('minay_orders',O);}}catch(e){}}
+function coPaid(method){
+coId=coId||mkId();const tx=((document.getElementById('coTx')||{}).value||'').trim();saveOrder(coId,method,'BTC','notified',tx);
+cart={};save();renderCart();coStep=3;renderCheckout();
+}
+function bankSent(){if(coId)updateOrderSt(coId,'notified');coStep=3;renderCheckout();}
+function track(){
+const id=(document.getElementById('trackId').value||'').trim().toUpperCase();
+let O=[];try{O=sGet('minay_orders',[]);}catch(e){}
+const o=O.find(x=>x.id===id);
+const box=document.getElementById('trackRes');
+if(!o){box.innerHTML=`<p style="color:#c62828">${t('trackNone')}</p>`;return;}
+const n=o.items.reduce((s,i)=>s+i.q,0);
+const st=o.st==='wait'?t('stWait'):o.st==='notified'?t('stRev'):o.st==='confirmed'?t('stConf'):o.st==='cancelled'?t('stCancel'):t('stPrep');
+box.innerHTML=`<div class="box" style="margin-top:0;background:#f1f8e9"><b>${o.id}</b> · ${st}<br><span style="font-size:13px">${n} ${t('items')} · ${o.method==='bank'?Math.round(o.try).toLocaleString('en-US')+' ₺':'₿ '+o.btc+' BTC'}<br>${o.time}${(o.items[0]&&o.items[0].link)?'<br>🔗 '+esc(String(o.items[0].link).slice(0,60)):''}</span></div>`;
+}
+function copyTxt(txt,el,msg){navigator.clipboard.writeText(txt).then(()=>toast(msg||t('copied')),()=>toast(txt));}
+function copyAddr(){copyTxt(BTC,null,t('copied'));}
+function admSet(id,st){updateOrderSt(id,st);renderAdmin();toast(t('saved'));}
+function renderFaq(){document.getElementById('faqBox').innerHTML=[1,2,3,4,5,6,7].map(i=>`<details><summary>${t('q'+i)}</summary><p style="margin-top:8px">${t('a'+i)}</p></details>`).join('');}
+let linkData=null;
+function linkCalc(){
+const u=document.getElementById('linkUrl').value.trim();
+const pr=parseFloat(document.getElementById('linkPrice').value)||0;
+const q=Math.max(1,parseInt(document.getElementById('linkQty').value)||1);
+const a=document.getElementById('linkAddr').value.trim();
+if(u.length<8||!/^https?:\/\//i.test(u)||pr<=0||a.length<10){toast(t('linkNeed'));return;}
+const tot=pr*q*(1+COM.rate/100),b=btc8(tot);
+linkData={u,pr,q,a,tot,b,id:mkId(),ccy:'TRY'};
+document.getElementById('linkRes').innerHTML=`<div class="minay-line"><span>${t('total')}: ${fmt(tot)}<small>₿ ${b} BTC</small></span><b>🔗 Link</b></div><div class="paycards"><div class="paycard" onclick="linkPay('btc')"><b>${t('mBtcT')}</b><small>₿ ${b} BTC</small></div><div class="paycard" onclick="linkPay('bank')"><b>${t('mBankT')}</b><small>${fmt(tot)}</small></div></div><div id="linkPay"></div>`;
+document.getElementById('linkRes').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function linkPay(m){
+const d=linkData;if(!d)return;const box=document.getElementById('linkPay');
+if(m==='btc'){const uri='bitcoin:'+BTC+'?amount='+d.b;
+box.innerHTML=`<div class="paybox"><div>${t('sendExact')}</div><div class="amt">${d.b} BTC</div><div class="amt2">${fmt(d.tot)}</div><div class="adr">${BTC}</div><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(uri)}" width="130" height="130" style="border-radius:10px;background:#fff;padding:6px" alt="QR"></div><input id="linkTx" placeholder="${t('txPh')}" style="width:100%;padding:11px;margin-top:8px;border:2px solid #e0e0e0;border-radius:12px;font-size:13px;direction:ltr"><button class="bigbtn" onclick="linkDone('btc')">${t('paidBtn')}</button>`;}
+else{box.innerHTML=`<div class="ccyrow"><button id="lqT" class="on" onclick="linkCcy('TRY')">${t('bankTRY')}</button><button id="lqU" onclick="linkCcy('USD')">${t('bankUSD')}</button></div><div id="linkBankBox"></div><button class="bigbtn" onclick="linkDone('bank')">${t('sentBtn')}</button>`;linkCcy('TRY');}
+}
+function linkCcy(c){if(!linkData)return;linkData.ccy=c;const iban=c==='USD'?BANK.USD:BANK.TRY;const amt=c==='USD'?(linkData.tot/(R.USD||42)).toFixed(2)+' $':Math.round(linkData.tot).toLocaleString('en-US')+' ₺';
+document.getElementById('lqT').className=c==='TRY'?'on':'';document.getElementById('lqU').className=c==='USD'?'on':'';
+document.getElementById('linkBankBox').innerHTML=`<div class="ibanbox"><div class="nm">${t('accName')}: ${BANK.name}</div><div class="ib">${iban}</div><div style="font-size:18px;font-weight:900">${t('total')}: ${amt}</div><div style="font-size:13px">${t('refL')}: <b style="font-size:16px">${linkData.id}</b></div></div><p style="font-size:12.5px;color:#5d4037;background:#fff3e0;border-radius:10px;padding:8px">${t('bankNote')}</p>`;}
+function linkDone(method){
+const d=linkData;if(!d)return;const ltx=((document.getElementById('linkTx')||{}).value||'').trim();
+try{const O=sGet('minay_orders',[]);O.unshift({id:d.id,items:[{link:d.u,price:d.pr,q:d.q}],try:Math.round(d.tot),btc:d.b,method,ccy:method==='bank'?(d.ccy||'TRY'):'BTC',addr:d.a,tx:method==='btc'?ltx:'',time:new Date().toLocaleString(),st:'notified'});sSet('minay_orders',O);}catch(e){}
+document.getElementById('linkRes').innerHTML=`<h3>${t('okT')}</h3><p style="font-size:14px;color:#555">${t('okSub')}</p><p style="font-size:13px;color:#1b5e20;background:#f1f8e9;border-radius:10px;padding:8px;margin-top:8px">${t('revNote')}</p><div class="oid">${d.id}</div><button class="more" style="width:100%" onclick="copyTxt('${d.id}',null,'${t('copied')}')">${t('copyId')}</button>`;
+linkData=null;
+}
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+function openAdmin(){adminOn=false;document.getElementById('adminBody').innerHTML=`<h3>${t('admT')}</h3><div class="warn">Demo auth — real stores need a server.</div><input id="aMail" placeholder="${t('admEmail')}"><input id="aPass" type="password" placeholder="${t('admPass')}"><button class="abtn" onclick="doLogin()">${t('admLogin')}</button>`;document.getElementById('adminModal').classList.add('show');document.getElementById('overlay').classList.add('show');}
+async function doLogin(){const m=document.getElementById('aMail').value.trim().toLowerCase();const h=await sha(document.getElementById('aPass').value);if(m===ADMIN_EMAIL&&h===ADMIN_HASH){adminOn=true;admTab='O';renderAdmin();}else{toast(t('admErr'));}}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('show');document.getElementById('overlay').classList.remove('show');adminOn=false;}
+function setTab(v){admTab=v;renderAdmin();}
+function renderAdmin(){
+const tabs=[['O',t('tabO')],['L',t('tabL')],['C',t('tabC')],['F',t('tabF')],['A',t('tabA')],['P',t('tabP')]];
+let body=`<h3>${t('admT')} ✅</h3><div class="atabs">${tabs.map(x=>`<button class="${admTab===x[0]?'on':''}" onclick="setTab('${x[0]}')">${x[1]}</button>`).join('')}<button class="abtn" onclick="closeAdmin()">${t('admOut')}</button></div>`;
+if(admTab==='O'){let O=[];try{O=sGet('minay_orders',[]);}catch(e){}
+body+=O.length?`<table class="atable"><tr><th>${t('cId')}</th><th>${t('cM')}</th><th>${t('cBtc')}</th><th>${t('cAddr')}</th><th>${t('cTime')}</th></tr>${O.slice(0,50).map(o=>`<tr><td><b>${o.id}</b><br><small>${o.items.map(i=>(i.link?('🔗'+String(i.link).slice(0,44)):i.id+'×'+i.q)).join(', ')}${o.tx?('<br>tx:'+esc(String(o.tx)).slice(0,24)):''}</small><br>${(o.st==='wait'||o.st==='notified')?`<button class="abtn" style="padding:4px 10px;font-size:12px" onclick="admSet('${o.id}','confirmed')">✓</button> <button class="abtn" style="padding:4px 10px;font-size:12px;background:#c62828" onclick="admSet('${o.id}','cancelled')">✕</button>`:`<small>${o.st}</small>`}</td><td>${o.method||'btc'}</td><td>${o.method==='bank'?Math.round(o.try).toLocaleString('en-US')+' ₺':'₿'+o.btc}</td><td><small>${(o.addr||'').slice(0,60)}...</small></td><td><small>${o.time}</small></td></tr>`).join('')}</table><button class="abtn" onclick="if(confirm('?')){sDel('minay_orders');renderAdmin();}">${t('clearAll')}</button>`:`<p>${t('ordNone')}</p>`;}
+if(admTab==='L'){const L=sGet('minay_leads',[]);body+=L.length?`<table class="atable"><tr><th>${t('cProd')}</th><th>${t('cStore')}</th><th>${t('cTime')}</th></tr>${L.slice(0,50).map(l=>{const p=PRODUCTS.find(x=>x.id===l.p);return `<tr><td>${p?p.n.en:''}</td><td>${l.s}</td><td>${l.time}</td></tr>`;}).join('')}</table>`:`<p>${t('leadsNone')}</p>`;}
+if(admTab==='C'){body+=`${t('comL')}<input id="cR" type="number" step="0.1" value="${COM.rate}"><br><button class="abtn" onclick="saveCom()">${t('save')}</button>`;}
+if(admTab==='F'){body+=`<p style="font-size:12.5px;color:#666">${t('fxNote')}</p>`+Object.keys(R).filter(k=>k!=='TRY').map(k=>`${k}<input data-fx="${k}" type="number" step="any" value="${R[k]}">`).join('')+`<br><button class="abtn" onclick="saveFx()">${t('save')}</button>`;}
+if(admTab==='A'){body+=`${t('annL')}<input id="aAnn" value="${(ANN||'').replace(/"/g,'&quot;')}"><br><button class="abtn" onclick="saveAnn()">${t('save')}</button>`;}
+if(admTab==='P'){const cats=['hand','power','electro','hardware','measure','safety','office'];
+body+=`${t('pNameL')}<input id="pN">${t('pPriceL')}<input id="pP" type="number"><div style="display:flex;gap:8px"><div style="flex:1">${t('pCatL')}<select id="pC">${cats.map(c=>`<option value="${c}">${t('cat_'+c)}</option>`).join('')}</select></div><div style="flex:1">${t('pQueryL')}<input id="pQ"></div></div>${t('pImgL')}<input id="pI" placeholder="img/p1.jpg"><button class="abtn" onclick="addCustom()">${t('pAdd')}</button><br>${t('pImpL')}<textarea id="pJ" rows="3" style="width:100%" placeholder='[{"n":"...","price":100}]'></textarea><button class="abtn" onclick="impCustom()">${t('pAdd')}</button> <button class="abtn" onclick="expCustom()">${t('pExp')}</button>`;}
+document.getElementById('adminBody').innerHTML=body;
+}
+function getCustom(){return sGet('minay_custom',[]);}
+function setCustom(c){sSet('minay_custom',c);}
+function addCustom(){
+const nm=document.getElementById('pN').value.trim(),pr=parseFloat(document.getElementById('pP').value)||0;
+if(!nm||pr<=0){toast('!');return;}
+const c=getCustom();const id=9000+c.length+Math.floor(Math.random()*800);
+const it={id,cat:document.getElementById('pC').value,emoji:'📦',rating:5,reviews:0,query:document.getElementById('pQ').value||nm,img:document.getElementById('pI').value.trim(),n:{tr:nm,ar:nm,en:nm},offers:[['Trendyol',Math.round(pr)],['Amazon',R9(pr*1.05)]]};
+c.push(it);setCustom(c);PRODUCTS.push(it);applyI18n();toast(t('addedP'));
+}
+function impCustom(){try{const arr=JSON.parse(document.getElementById('pJ').value);if(!Array.isArray(arr))throw 0;const c=getCustom();arr.forEach((a,i)=>{const pr=parseFloat(a.price)||0;if(!a.n||pr<=0)return;const it={id:9500+c.length+i,cat:'office',emoji:'📦',rating:5,reviews:0,query:a.q||a.n,img:a.img||'',n:{tr:a.n,ar:a.n,en:a.n},offers:[['Trendyol',Math.round(pr)],['Amazon',R9(pr*1.05)]]};c.push(it);PRODUCTS.push(it);});setCustom(c);applyI18n();toast(t('addedP'));}catch(e){toast('JSON!');}}
+function expCustom(){const blob=new Blob([JSON.stringify(getCustom())],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='minay-products.json';a.click();}
+function saveCom(){COM.rate=parseFloat(document.getElementById('cR').value)||3;sSet('minay_com',COM);document.getElementById('statCom').textContent='%'+COM.rate;render();renderCart();toast(t('saved'));}
+function saveFx(){document.querySelectorAll('[data-fx]').forEach(i=>{const v=parseFloat(i.value);if(v>0)R[i.dataset.fx]=v;});sSet('minay_fx',R);render();renderCart();toast(t('saved'));}
+function saveAnn(){ANN=document.getElementById('aAnn').value;sStr('minay_ann',ANN);document.getElementById('topbar').textContent=ANN||('🛡️ '+t('motto')+' | '+t('heroPill'));toast(t('saved'));}
+function toast(m){const x=document.getElementById('toast');x.textContent=m;x.style.display='block';clearTimeout(x._h);x._h=setTimeout(()=>x.style.display='none',2400);}
+applyI18n();save();
+</script>
+</body>
+</html>
