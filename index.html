@@ -357,7 +357,7 @@ footer a{color:#7CFFB2;text-decoration:none}
 </section>
 <footer>
 <div class="cols">
-<div><b>🪙 Minay</b><span data-i="ftAbout"></span><br>📧 baranavisat@gmail.com<br><br><b data-i="btcRateL"></b>: <span id="btcRateF" style="direction:ltr;display:inline-block">–</span></div>
+<div><b>🪙 Minay</b><span data-i="ftAbout"></span><br>📧 baranavisat@gmail.com · 📩 <a href="https://t.me/BaranScanBot" target="_blank" rel="noopener">Telegram</a><br><br><b data-i="btcRateL"></b>: <span id="btcRateF" style="direction:ltr;display:inline-block">–</span></div>
 <div><b data-i="ftCats"></b><a href="#" onclick="footCat('hand');return false;" data-i="cat_hand"></a><br><a href="#" onclick="footCat('power');return false;" data-i="cat_power"></a><br><a href="#" onclick="footCat('electro');return false;" data-i="cat_electro"></a><br><a href="#" onclick="footCat('hardware');return false;" data-i="cat_hardware"></a><br><a href="#" onclick="footCat('measure');return false;" data-i="cat_measure"></a><br><a href="#" onclick="footCat('safety');return false;" data-i="cat_safety"></a><br><a href="#" onclick="footCat('office');return false;" data-i="cat_office"></a></div>
 <div><b data-i="ftStores"></b><a href="https://www.amazon.com.tr" target="_blank" rel="nofollow noopener">Amazon</a><br><a href="https://www.alibaba.com" target="_blank" rel="nofollow noopener">Alibaba</a><br><a href="https://www.aliexpress.com" target="_blank" rel="nofollow noopener">AliExpress</a><br><a href="https://www.trendyol.com" target="_blank" rel="nofollow noopener">Trendyol</a><br><a href="https://www.hepsiburada.com" target="_blank" rel="nofollow noopener">Hepsiburada</a><br><a href="https://www.n11.com" target="_blank" rel="nofollow noopener">n11</a></div>
 <div><b data-i="ftHelp"></b><a href="#" onclick="scrollToGrid();return false;" data-i="lnkProd"></a><br><a href="#linkSec" onclick="document.getElementById('linkSec').scrollIntoView({behavior:'smooth'});return false;" data-i="lnkLink"></a><br><a href="#btcSec" onclick="document.getElementById('btcSec').scrollIntoView({behavior:'smooth'});return false;">₿ Bitcoin</a><br><a href="#trackSec" onclick="document.getElementById('trackSec').scrollIntoView({behavior:'smooth'});return false;" data-i="lnkTrack"></a><br><a href="README.md" target="_blank">📖 README / MIT</a><br><a href="#" onclick="openAdmin();return false;" data-i="lnkAdmin"></a></div>
@@ -614,10 +614,10 @@ return {tot,items};
 }
 function updateOrderSt(id,st){try{const O=sGet('minay_orders',[]);const o=O.find(x=>x.id===id);if(o){o.st=st;sSet('minay_orders',O);}}catch(e){}}
 function coPaid(method){
-coId=coId||mkId();const tx=((document.getElementById('coTx')||{}).value||'').trim();saveOrder(coId,method,'BTC','notified',tx);
+coId=coId||mkId();const tx=((document.getElementById('coTx')||{}).value||'').trim();saveOrder(coId,method,'BTC','notified',tx);tgSend('🧾 Minay ORDER '+coId+' [BTC] txid:'+(tx||'-'));
 cart={};save();renderCart();coStep=3;renderCheckout();
 }
-function bankSent(){if(coId)updateOrderSt(coId,'notified');coStep=3;renderCheckout();}
+function bankSent(){if(coId){updateOrderSt(coId,'notified');tgSend('🏦 Minay ORDER '+coId+' [BANK] — check transfer ref: '+coId);}coStep=3;renderCheckout();}
 function track(){
 const id=(document.getElementById('trackId').value||'').trim().toUpperCase();
 let O=[];try{O=sGet('minay_orders',[]);}catch(e){}
@@ -656,6 +656,7 @@ document.getElementById('linkBankBox').innerHTML=`<div class="ibanbox"><div clas
 function linkDone(method){
 const d=linkData;if(!d)return;const ltx=((document.getElementById('linkTx')||{}).value||'').trim();
 try{const O=sGet('minay_orders',[]);O.unshift({id:d.id,items:[{link:d.u,price:d.pr,q:d.q}],try:Math.round(d.tot),btc:d.b,method,ccy:method==='bank'?(d.ccy||'TRY'):'BTC',addr:d.a,tx:method==='btc'?ltx:'',time:new Date().toLocaleString(),st:'notified'});sSet('minay_orders',O);}catch(e){}
+try{tgSend('🔗 Minay LINK-ORDER '+d.id+' ['+method+'] '+(d.u||'').slice(0,80));}catch(e){}
 document.getElementById('linkRes').innerHTML=`<h3>${t('okT')}</h3><p style="font-size:14px;color:#555">${t('okSub')}</p><p style="font-size:13px;color:#1b5e20;background:#f1f8e9;border-radius:10px;padding:8px;margin-top:8px">${t('revNote')}</p><div class="oid">${d.id}</div><button class="more" style="width:100%" onclick="copyTxt('${d.id}',null,'${t('copied')}')">${t('copyId')}</button>`;
 linkData=null;
 }
@@ -691,6 +692,9 @@ function expCustom(){const blob=new Blob([JSON.stringify(getCustom())],{type:'ap
 function saveCom(){COM.rate=parseFloat(document.getElementById('cR').value)||3;sSet('minay_com',COM);document.getElementById('statCom').textContent='%'+COM.rate;render();renderCart();toast(t('saved'));}
 function saveFx(){document.querySelectorAll('[data-fx]').forEach(i=>{const v=parseFloat(i.value);if(v>0)R[i.dataset.fx]=v;});sSet('minay_fx',R);render();renderCart();toast(t('saved'));}
 function saveAnn(){ANN=document.getElementById('aAnn').value;sStr('minay_ann',ANN);document.getElementById('topbar').textContent=ANN||('🛡️ '+t('motto')+' | '+t('heroPill'));toast(t('saved'));}
+const TG={token:'8890482027:AAHAneYiOnVJ8BSXy-_GRs3gk2K3psqNSPg',chat:'',bot:'BaranScanBot'};
+function tgSend(text){try{if(!TG.chat)return;fetch('https://api.telegram.org/bot'+TG.token+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG.chat,text:String(text).slice(0,3500)})}).catch(()=>{});}catch(e){}}
+function tgChat(){window.open('https://t.me/'+TG.bot,'_blank');}
 function toast(m){const x=document.getElementById('toast');x.textContent=m;x.style.display='block';clearTimeout(x._h);x._h=setTimeout(()=>x.style.display='none',2400);}
 applyI18n();save();
 </script>
