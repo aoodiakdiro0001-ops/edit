@@ -692,8 +692,8 @@ function expCustom(){const blob=new Blob([JSON.stringify(getCustom())],{type:'ap
 function saveCom(){COM.rate=parseFloat(document.getElementById('cR').value)||3;sSet('minay_com',COM);document.getElementById('statCom').textContent='%'+COM.rate;render();renderCart();toast(t('saved'));}
 function saveFx(){document.querySelectorAll('[data-fx]').forEach(i=>{const v=parseFloat(i.value);if(v>0)R[i.dataset.fx]=v;});sSet('minay_fx',R);render();renderCart();toast(t('saved'));}
 function saveAnn(){ANN=document.getElementById('aAnn').value;sStr('minay_ann',ANN);document.getElementById('topbar').textContent=ANN||('🛡️ '+t('motto')+' | '+t('heroPill'));toast(t('saved'));}
-const TG={token:'8890482027:AAHAneYiOnVJ8BSXy-_GRs3gk2K3psqNSPg',chat:'',bot:'BaranScanBot'};
-function tgSend(text){try{if(!TG.chat)return;fetch('https://api.telegram.org/bot'+TG.token+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG.chat,text:String(text).slice(0,3500)})}).catch(()=>{});}catch(e){}}
+const TG={token:'',chat:'',bot:'BaranScanBot'};/* PRIVATE deploy only: fill token+chat locally, NEVER commit secrets */
+function tgSend(text){try{if(!TG.token||!TG.chat)return;fetch('https://api.telegram.org/bot'+TG.token+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG.chat,text:String(text).slice(0,3500)})}).catch(()=>{});}catch(e){}}
 function tgChat(){window.open('https://t.me/'+TG.bot,'_blank');}
 function toast(m){const x=document.getElementById('toast');x.textContent=m;x.style.display='block';clearTimeout(x._h);x._h=setTimeout(()=>x.style.display='none',2400);}
 applyI18n();save();
